@@ -1,0 +1,641 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  data-theme-mode="auto">
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_ex15nbittbh';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.swPath = '/sw.js';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://chengleiz393-tech.github.io/project';window.REIMU_CONFIG.relative = '/';window.REIMU_CONFIG.dark_mode = {"button":true,"mode":"auto"};</script>
+  <title>
+    汇编语言(待续) | my blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_ex15nbittbh.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="书上的顺序  汇编语言王爽  第一章：基础知识  1.1机器语言  机器语言是机器指令的集合；机器指令就是机器可以正确执行的命令（相当于平时写的代码） 在电脑中CPU（芯片）来执行指令 二进制（机器语言的表达形式）的缺点：1.难读2.不易检查   1.2 汇编语言的产生  汇编语言用来解决上面机器语言的缺点。机器指令和汇编指令的差别就在指令的表达方式；汇编语言的主体：汇编指令      寄存器B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编语言(待续)">
+<meta property="og:url" content="https://chengleiz393-tech.github.io/project/2026/09/19/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="书上的顺序  汇编语言王爽  第一章：基础知识  1.1机器语言  机器语言是机器指令的集合；机器指令就是机器可以正确执行的命令（相当于平时写的代码） 在电脑中CPU（芯片）来执行指令 二进制（机器语言的表达形式）的缺点：1.难读2.不易检查   1.2 汇编语言的产生  汇编语言用来解决上面机器语言的缺点。机器指令和汇编指令的差别就在指令的表达方式；汇编语言的主体：汇编指令      寄存器B">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:%5CUsers%5Ccheng%5CDesktop%5Ccpu%E4%BB%8E%E5%86%85%E5%AD%98%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BF%87%E7%A8%8B.jpg">
+<meta property="article:published_time" content="2026-09-18T22:44:14.000Z">
+<meta property="article:modified_time" content="2026-10-10T00:12:28.432Z">
+<meta property="article:author" content="Ciallo～">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:%5CUsers%5Ccheng%5CDesktop%5Ccpu%E4%BB%8E%E5%86%85%E5%AD%98%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BF%87%E7%A8%8B.jpg">
+    <link rel="alternate" href="/atom.xml" title="my blog" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.3/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+  <body>
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+  <div class="notification-wrapper">
+    <h1>发现新版本</h1>
+    <p>网站好像有新内容，是否更新(ﾟ⊿ﾟ)ﾂ？</p>
+    <div class="notification-btn">
+      <button id="notification-update-btn">更新</button>
+      <button id="notification-close-btn">取消</button>
+    </div>
+  </div>
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+            <div class="main-nav-icon icon rotate">
+                &#xe62b;
+            </div>
+          <span class="main-nav-link">首页</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/archives">
+            <div class="main-nav-icon icon rotate">
+                &#xe62b;
+            </div>
+          <span class="main-nav-link">归档</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/about">
+            <div class="main-nav-icon icon rotate">
+                &#xe62b;
+            </div>
+          <span class="main-nav-link">关于</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/friend">
+            <div class="main-nav-icon icon rotate">
+                &#xe62b;
+            </div>
+          <span class="main-nav-link">友链</span>
+        </a>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+  </nav>
+</div>
+<header id="header" aria-label="Site header">
+        <picture>
+        </picture>
+          <img  fetchpriority="high" src="/images/banner.webp" alt="汇编语言(待续)">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">汇编语言(待续)</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content" class="sidebar-left"  >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%A6%E4%B8%8A%E7%9A%84%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.</span> <span class="toc-text"> 书上的顺序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%8E%8B%E7%88%BD"><span class="toc-number">1.1.</span> <span class="toc-text"> 汇编语言王爽</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 第一章：基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11%E6%9C%BA%E5%99%A8%E8%AF%AD%E8%A8%80"><span class="toc-number">1.1.1.1.</span> <span class="toc-text"> 1.1机器语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%9A%84%E4%BA%A7%E7%94%9F"><span class="toc-number">1.1.1.2.</span> <span class="toc-text"> 1.2 汇编语言的产生</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.1.1.3.</span> <span class="toc-text"> 1.3 汇编语言的组成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-%E5%AD%98%E5%82%A8%E5%99%A8"><span class="toc-number">1.1.1.4.</span> <span class="toc-text"> 1.4 存储器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-%E6%8C%87%E4%BB%A4%E5%92%8C%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.1.5.</span> <span class="toc-text"> 1.5 指令和数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-%E5%AD%98%E5%82%A8%E5%8D%95%E5%85%83"><span class="toc-number">1.1.1.6.</span> <span class="toc-text"> 1.6 存储单元</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#17-cpu%E5%AF%B9%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E8%AF%BB%E5%86%99"><span class="toc-number">1.1.1.7.</span> <span class="toc-text"> 1.7 CPU对存储器的读写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-%E5%9C%B0%E5%9D%80%E6%80%BB%E7%BA%BF"><span class="toc-number">1.1.1.8.</span> <span class="toc-text"> 1.8 地址总线</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="toc-number">1.2.</span> <span class="toc-text"> x64汇编语言</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#week-2"><span class="toc-number">2.</span> <span class="toc-text"> Week 2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E5%92%8C%E5%8D%81%E8%BF%9B%E5%88%B6%E4%BA%92%E8%BD%AC%E5%8F%82%E8%80%83%E7%8E%8B%E7%88%BD%E4%B8%80%E4%BA%8C%E7%AB%A0"><span class="toc-number">2.1.</span> <span class="toc-text"> 1.  二进制，十六进制和十进制互转（参考：王爽一，二章）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-x86-64%E5%AF%84%E5%AD%98%E5%99%A8%E5%8F%82%E8%80%83%E7%8E%8B%E7%88%BD%E7%AC%AC%E4%BA%8C%E7%AB%A0x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="toc-number">2.2.</span> <span class="toc-text"> 2. x86-64寄存器（参考王爽第二章，x64汇编语言第二章）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E7%8E%8B%E7%88%BD%E4%B9%A6%E4%BA%8C%E4%B8%89%E5%8D%81%E5%8D%81%E4%B8%80%E4%B9%9D%E7%AB%A0x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%807891225%E7%AB%A0"><span class="toc-number">2.3.</span> <span class="toc-text"> 3. 常用指令（王爽书二，三，十，十一，九章，x64汇编语言7，8，9，12，25章）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%86%85%E5%AD%98%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%E7%8E%8B%E7%88%BD%E4%B9%A678%E7%AB%A0x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%8083637%E7%AB%A0"><span class="toc-number">2.4.</span> <span class="toc-text"> 4. 内存寻址方式（王爽书7，8章，x64汇编语言8，36，37章）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9Ax64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%8015%E7%AB%A0"><span class="toc-number">2.5.</span> <span class="toc-text"> 5. 函数调用约定（x64汇编语言15章）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E6%A0%88%E5%B8%A7%E7%BB%93%E6%9E%84%E7%8E%8B%E7%88%BD10x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%8013"><span class="toc-number">2.6.</span> <span class="toc-text"> 6.栈帧结构（王爽10，x64汇编语言13）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%B1%87%E7%BC%96%E4%B8%8Ec%E5%AF%B9%E5%BA%94x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%802223"><span class="toc-number">2.7.</span> <span class="toc-text"> 7. 汇编与c对应（x64汇编语言22，23）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AF%B9%E9%BD%90%E4%B8%8E%E6%8C%87%E4%BB%A4%E9%95%BF%E5%BA%A6"><span class="toc-number">2.8.</span> <span class="toc-text"> 8. 小程序，对齐与指令长度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#81-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%8E%8B%E7%88%BD3x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%804"><span class="toc-number">2.8.1.</span> <span class="toc-text"> 8.1 小程序（王爽3，x64汇编语言4）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#82%E5%AF%B9%E9%BD%90x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%801326"><span class="toc-number">2.8.2.</span> <span class="toc-text"> 8.2对齐（x64汇编语言13，26）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#83-%E6%8C%87%E4%BB%A4%E9%95%BF%E5%BA%A6%E7%8E%8B%E7%88%BD29"><span class="toc-number">2.8.3.</span> <span class="toc-text"> 8.3 指令长度（王爽2，9）</span></a></li></ol></li></ol></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Ciallo～" class="lazyload">
+  <div class="sidebar-author-name">Ciallo～</div>
+  <div class="sidebar-description">Ciallo～(∠・ω&lt; )⌒★</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/chengleiz393-tech itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-汇编语言" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2026-09-18T22:44:14.000Z" itemprop="datePublished">2026-09-19</time>
+    <time style="display: none;" id="post-update-time">2026-10-10</time>
+  </span>
+</div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <h1 id="书上的顺序"><a class="markdownIt-Anchor" href="#书上的顺序"></a> 书上的顺序</h1>
+<h2 id="汇编语言王爽"><a class="markdownIt-Anchor" href="#汇编语言王爽"></a> 汇编语言王爽</h2>
+<h3 id="第一章基础知识"><a class="markdownIt-Anchor" href="#第一章基础知识"></a> 第一章：基础知识</h3>
+<h4 id="11机器语言"><a class="markdownIt-Anchor" href="#11机器语言"></a> 1.1机器语言</h4>
+<ul>
+<li>机器语言是机器指令的集合；机器指令就是机器可以正确执行的命令（相当于平时写的代码）</li>
+<li>在电脑中CPU（<strong>芯片</strong>）来执行指令</li>
+<li>二进制（机器语言的<strong>表达形式</strong>）的缺点：1.难读2.不易检查</li>
+</ul>
+<h4 id="12-汇编语言的产生"><a class="markdownIt-Anchor" href="#12-汇编语言的产生"></a> 1.2 汇编语言的产生</h4>
+<blockquote>
+<p>汇编语言用来解决上面机器语言的缺点。机器指令和汇编指令的差别就在指令的表达方式；汇编语言的主体：汇编指令</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>寄存器BX的内容发到AX里</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>机器指令</td>
+<td>1000100111011000</td>
+</tr>
+<tr>
+<td>会编指令</td>
+<td>mov ax,bx</td>
+</tr>
+</tbody>
+</table>
+<p><strong>寄存器</strong>：CPU中可以储存数据的器件</p>
+<p><strong>工作流程</strong>：汇编语言（代码）-&gt;编译器（dev-c++等）-&gt;机器码（二进制）-&gt;计算机运行</p>
+<h4 id="13-汇编语言的组成"><a class="markdownIt-Anchor" href="#13-汇编语言的组成"></a> 1.3 汇编语言的组成</h4>
+<p>组成</p>
+<ol>
+<li><strong>汇编指令</strong>：机器码的助记符（类似于代码），有对应的机器码</li>
+<li><strong>伪指令</strong>：没有对应的机器码，由编译器执行，计算机不执行</li>
+<li><strong>其他符号</strong>：如； +，-等由编译器识别，没有对应的机器码</li>
+</ol>
+<h4 id="14-存储器"><a class="markdownIt-Anchor" href="#14-存储器"></a> 1.4 存储器</h4>
+<p>作用：储存指令和数据，给CPU调用（就是内存）</p>
+<blockquote>
+<p>磁盘不同与内存，磁盘上储存的数据要被内存读取才能被CPU使用</p>
+</blockquote>
+<h4 id="15-指令和数据"><a class="markdownIt-Anchor" href="#15-指令和数据"></a> 1.5 指令和数据</h4>
+<p>指令和数据是应用上的概念，两者本质都是二进制信息</p>
+<h4 id="16-存储单元"><a class="markdownIt-Anchor" href="#16-存储单元"></a> 1.6 存储单元</h4>
+<p>存储器被划分成若干个存储单元。单位（字节）</p>
+<p>最<strong>小</strong>信息单位比特（bit）(一个二进制位，就是一个0或1):8bit=1Byte（一个存储单元对应一个Byte）</p>
+<h4 id="17-cpu对存储器的读写"><a class="markdownIt-Anchor" href="#17-cpu对存储器的读写"></a> 1.7 CPU对存储器的读写</h4>
+<blockquote>
+<p>cpu要从内存读取读数据，要指定存储单元的地址，还要指明对哪一个器件进行哪种操作</p>
+</blockquote>
+<p>cpu进行数据读写要和芯片进行下面三种操作：</p>
+<ul>
+<li>储存单元的地址（<strong>地址信息</strong>）</li>
+<li>器件的选择，读或写的命令（<strong>控制信息</strong>）</li>
+<li>读或写的数据（<strong>数据信息</strong>）</li>
+</ul>
+<p><strong>总线</strong>：连接cpu和其他芯片的导线</p>
+<p>总线分类</p>
+<ul>
+<li>地址总线</li>
+<li>控制总线</li>
+<li>数据总线</li>
+</ul>
+<p><img src="C:%5CUsers%5Ccheng%5CDesktop%5Ccpu%E4%BB%8E%E5%86%85%E5%AD%98%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BF%87%E7%A8%8B.jpg" alt="cpu从内存读取数据的过程" /></p>
+<ol>
+<li>cpu通过地址线把地址信息3发出</li>
+<li>cpu通过控制线发出内存读命令，选中存储芯片，并通知它，将要从中读取数据</li>
+<li>存储器将3号单元中的数据8通过数据线送入CPU（写入也一样）</li>
+</ol>
+<h4 id="18-地址总线"><a class="markdownIt-Anchor" href="#18-地址总线"></a> 1.8 地址总线</h4>
+<h2 id="x64汇编语言"><a class="markdownIt-Anchor" href="#x64汇编语言"></a> x64汇编语言</h2>
+<h1 id="week-2"><a class="markdownIt-Anchor" href="#week-2"></a> Week 2</h1>
+<h2 id="1-二进制十六进制和十进制互转参考王爽一二章"><a class="markdownIt-Anchor" href="#1-二进制十六进制和十进制互转参考王爽一二章"></a> 1.  二进制，十六进制和十进制互转（参考：王爽一，二章）</h2>
+<p>一个十六进制数的一位相当于二进制的四位（4bit，0.5个字节）</p>
+<p><strong>规则</strong>：二进制数字结束后加**“B”<strong>或添加</strong>”0b“<strong>前缀,十六进制数字（</strong>”0~F“<strong>）结束后加</strong>”H“<strong>或添加</strong>”0x“**前缀</p>
+<p><strong>转换</strong>：</p>
+<ul>
+<li><strong>二到十</strong>：<strong>核心</strong>：加权。从右往左从2<sup>0</sup>开始上标递增，eg:11=2<sup>1</sup>*1+2<sup>0</sup>*1=3</li>
+<li><strong>二到十六</strong>：从右往左，<strong>四</strong>个为一组每组表示十六进制的一个数字，不足的用<strong>0</strong>补齐</li>
+</ul>
+<h2 id="2-x86-64寄存器参考王爽第二章x64汇编语言第二章"><a class="markdownIt-Anchor" href="#2-x86-64寄存器参考王爽第二章x64汇编语言第二章"></a> 2. x86-64寄存器（参考王爽第二章，x64汇编语言第二章）</h2>
+<h2 id="3-常用指令王爽书二三十十一九章x64汇编语言7891225章"><a class="markdownIt-Anchor" href="#3-常用指令王爽书二三十十一九章x64汇编语言7891225章"></a> 3. 常用指令（王爽书二，三，十，十一，九章，x64汇编语言7，8，9，12，25章）</h2>
+<h2 id="4-内存寻址方式王爽书78章x64汇编语言83637章"><a class="markdownIt-Anchor" href="#4-内存寻址方式王爽书78章x64汇编语言83637章"></a> 4. 内存寻址方式（王爽书7，8章，x64汇编语言8，36，37章）</h2>
+<h2 id="5-函数调用约定x64汇编语言15章"><a class="markdownIt-Anchor" href="#5-函数调用约定x64汇编语言15章"></a> 5. 函数调用约定（x64汇编语言15章）</h2>
+<h2 id="6栈帧结构王爽10x64汇编语言13"><a class="markdownIt-Anchor" href="#6栈帧结构王爽10x64汇编语言13"></a> 6.栈帧结构（王爽10，x64汇编语言13）</h2>
+<h2 id="7-汇编与c对应x64汇编语言2223"><a class="markdownIt-Anchor" href="#7-汇编与c对应x64汇编语言2223"></a> 7. 汇编与c对应（x64汇编语言22，23）</h2>
+<h2 id="8-小程序对齐与指令长度"><a class="markdownIt-Anchor" href="#8-小程序对齐与指令长度"></a> 8. 小程序，对齐与指令长度</h2>
+<h3 id="81-小程序王爽3x64汇编语言4"><a class="markdownIt-Anchor" href="#81-小程序王爽3x64汇编语言4"></a> 8.1 小程序（王爽3，x64汇编语言4）</h3>
+<h3 id="82对齐x64汇编语言1326"><a class="markdownIt-Anchor" href="#82对齐x64汇编语言1326"></a> 8.2对齐（x64汇编语言13，26）</h3>
+<h3 id="83-指令长度王爽29"><a class="markdownIt-Anchor" href="#83-指令长度王爽29"></a> 8.3 指令长度（王爽2，9）</h3>
+
+    </div>
+    <footer class="article-footer">
+        <blockquote class="article-copyright">
+    <p><strong><span class="icon-user icon"></span>本文作者：</strong>Ciallo～</p>
+    <p><strong><span class="icon-link icon"></span>本文链接：</strong><a href="https://chengleiz393-tech.github.io/project/2026/09/19/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">https://chengleiz393-tech.github.io/project/2026/09/19/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</a></p>
+    <p><strong><span class="icon-pencil icon"></span>本文标题：</strong>「汇编语言(待续)」</p>
+    <p><strong><span class="icon-calendar icon"></span>本文发布时间：</strong>2026-09-19 06:44:14</p>
+    <p><strong><span class="icon-calendar icon"></span>本文更新时间：</strong>2026-10-10 08:12:28</p>
+    <p><strong><span class="icon-copyright icon"></span>本文版权：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> 许可协议。转载请注明出处！</p>
+    <span class="icon-creative-commons article-copyright-bg"></span>
+  </blockquote>
+        <a class="article-category-link" href="/categories/Re/" title="Re" data-aos="zoom-in">Re</a>
+
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag" title="笔记">笔记</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+            <img data-src="https://d-sketon.top/img/_backwebp/bg1.webp" data-sizes="auto" alt="HTTP协议" class="lazyload">
+        <a href="/2026/09/19/HTTP%E5%8D%8F%E8%AE%AE/" aria-label="前一篇: HTTP协议" title="前一篇: HTTP协议"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            HTTP协议
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+          <img data-src="https://d-sketon.top/img/_backwebp/bg1.webp" data-sizes="auto" alt="网站结构和访问流程" class="lazyload">
+      <a href="/2026/09/19/%E7%BD%91%E7%AB%99%E7%BB%93%E6%9E%84%E5%92%8C%E8%AE%BF%E9%97%AE%E6%B5%81%E7%A8%8B/" aria-label="后一篇: 网站结构和访问流程"  title="后一篇: 网站结构和访问流程"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          网站结构和访问流程
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2026
+        <span class="footer-info-sep rotate"></span>
+      Ciallo～
+    </div>
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+      <div>
+        <span class="icon-brush"></span>
+        9.8k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        00:43
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%A6%E4%B8%8A%E7%9A%84%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.</span> <span class="toc-text"> 书上的顺序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%8E%8B%E7%88%BD"><span class="toc-number">1.1.</span> <span class="toc-text"> 汇编语言王爽</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 第一章：基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11%E6%9C%BA%E5%99%A8%E8%AF%AD%E8%A8%80"><span class="toc-number">1.1.1.1.</span> <span class="toc-text"> 1.1机器语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%9A%84%E4%BA%A7%E7%94%9F"><span class="toc-number">1.1.1.2.</span> <span class="toc-text"> 1.2 汇编语言的产生</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.1.1.3.</span> <span class="toc-text"> 1.3 汇编语言的组成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-%E5%AD%98%E5%82%A8%E5%99%A8"><span class="toc-number">1.1.1.4.</span> <span class="toc-text"> 1.4 存储器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-%E6%8C%87%E4%BB%A4%E5%92%8C%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.1.5.</span> <span class="toc-text"> 1.5 指令和数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-%E5%AD%98%E5%82%A8%E5%8D%95%E5%85%83"><span class="toc-number">1.1.1.6.</span> <span class="toc-text"> 1.6 存储单元</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#17-cpu%E5%AF%B9%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E8%AF%BB%E5%86%99"><span class="toc-number">1.1.1.7.</span> <span class="toc-text"> 1.7 CPU对存储器的读写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-%E5%9C%B0%E5%9D%80%E6%80%BB%E7%BA%BF"><span class="toc-number">1.1.1.8.</span> <span class="toc-text"> 1.8 地址总线</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="toc-number">1.2.</span> <span class="toc-text"> x64汇编语言</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#week-2"><span class="toc-number">2.</span> <span class="toc-text"> Week 2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E5%92%8C%E5%8D%81%E8%BF%9B%E5%88%B6%E4%BA%92%E8%BD%AC%E5%8F%82%E8%80%83%E7%8E%8B%E7%88%BD%E4%B8%80%E4%BA%8C%E7%AB%A0"><span class="toc-number">2.1.</span> <span class="toc-text"> 1.  二进制，十六进制和十进制互转（参考：王爽一，二章）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-x86-64%E5%AF%84%E5%AD%98%E5%99%A8%E5%8F%82%E8%80%83%E7%8E%8B%E7%88%BD%E7%AC%AC%E4%BA%8C%E7%AB%A0x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="toc-number">2.2.</span> <span class="toc-text"> 2. x86-64寄存器（参考王爽第二章，x64汇编语言第二章）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E7%8E%8B%E7%88%BD%E4%B9%A6%E4%BA%8C%E4%B8%89%E5%8D%81%E5%8D%81%E4%B8%80%E4%B9%9D%E7%AB%A0x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%807891225%E7%AB%A0"><span class="toc-number">2.3.</span> <span class="toc-text"> 3. 常用指令（王爽书二，三，十，十一，九章，x64汇编语言7，8，9，12，25章）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%86%85%E5%AD%98%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%E7%8E%8B%E7%88%BD%E4%B9%A678%E7%AB%A0x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%8083637%E7%AB%A0"><span class="toc-number">2.4.</span> <span class="toc-text"> 4. 内存寻址方式（王爽书7，8章，x64汇编语言8，36，37章）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9Ax64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%8015%E7%AB%A0"><span class="toc-number">2.5.</span> <span class="toc-text"> 5. 函数调用约定（x64汇编语言15章）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E6%A0%88%E5%B8%A7%E7%BB%93%E6%9E%84%E7%8E%8B%E7%88%BD10x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%8013"><span class="toc-number">2.6.</span> <span class="toc-text"> 6.栈帧结构（王爽10，x64汇编语言13）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%B1%87%E7%BC%96%E4%B8%8Ec%E5%AF%B9%E5%BA%94x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%802223"><span class="toc-number">2.7.</span> <span class="toc-text"> 7. 汇编与c对应（x64汇编语言22，23）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AF%B9%E9%BD%90%E4%B8%8E%E6%8C%87%E4%BB%A4%E9%95%BF%E5%BA%A6"><span class="toc-number">2.8.</span> <span class="toc-text"> 8. 小程序，对齐与指令长度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#81-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%8E%8B%E7%88%BD3x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%804"><span class="toc-number">2.8.1.</span> <span class="toc-text"> 8.1 小程序（王爽3，x64汇编语言4）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#82%E5%AF%B9%E9%BD%90x64%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%801326"><span class="toc-number">2.8.2.</span> <span class="toc-text"> 8.2对齐（x64汇编语言13，26）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#83-%E6%8C%87%E4%BB%A4%E9%95%BF%E5%BA%A6%E7%8E%8B%E7%88%BD29"><span class="toc-number">2.8.3.</span> <span class="toc-text"> 8.3 指令长度（王爽2，9）</span></a></li></ol></li></ol></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Ciallo～" class="lazyload">
+  <div class="sidebar-author-name">Ciallo～</div>
+  <div class="sidebar-description">Ciallo～(∠・ω&lt; )⌒★</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/chengleiz393-tech itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png" loading="lazy" decoding="async" fetchpriority="low"/>
+        </div>
+      </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+  <script>
+    var setupFirework = () => {
+      if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+        window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+      }
+    }
+  </script>
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.2.0/dist/index.umd.js" integrity="sha384-qi9WggRt19tv8Vc7pCHW3ulMNLwrn515zaLEWZjl1px07vz8+pUoWX8n1rgq282T" crossorigin="anonymous" onload="setupFirework()" defer></script>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/live2d-widgets@0.9.0/autoload.js" integrity="sha384-poTN7wN&#x2F;SqNhQqo3jdFeX20ikddWeFGkUkDEzsKjgH&#x2F;ez8aQLn81oI0Cw6q5xNyB" crossorigin="anonymous"></script>
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "Ciallo～",
+          title: "汇编语言(待续)",
+          url: "https://chengleiz393-tech.github.io/project/2026/09/19/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/",
+          excerpt: "",
+          description: "",
+          stripContent: " 书上的顺序  汇编语言王爽  第一章：基础知识  1.1机器语言  机器语言是机器指令的集合；机器指令就是机器可以正确执行的命令（相当于平时写的代码） 在电脑中CPU（芯片）来执行指令 二进制（机器语言的表达形式）的缺点：1.难读2.不易检查   1.2 汇编语言的产生  汇编语言用来解决上面机器语言的缺点。机器指令和汇编指令的差别就在指令的表达方式；汇编语言的主体：汇编指令      寄存器BX的内容发到AX里     机器指令 1000100111011000   会编指令 mov ax,",
+          date: "Sat Sep 19 2026 06:44:14 GMT+0800",
+          updated: "Sat Oct 10 2026 08:12:28 GMT+0800",
+          cover: "/images/banner.webp",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      
+<script src="/js/tabs.js" data-pjax defer></script>
+
+      <script type="module" data-pjax>
+        (async () => {
+          const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+          const initPswp = (gallery, children) => {
+            if (_$$(`${gallery} ${children}`).length > 0) {
+              new PhotoSwipeLightbox({
+                gallery,
+                children,
+                pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+              }).init();
+            }
+          }
+          const pswp = () => {
+            initPswp('.article-entry', 'a.article-gallery-item');
+            initPswp('.article-gallery', 'a.article-gallery-item');
+          }
+          pswp();
+        })();
+      </script>
+        
+
+
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.12.6' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+  
+<script src="/js/service_worker.js"></script>
+
+
+
+    
+<script src="https://npm.webcache.cn/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6&#x2F;1Nxveei" crossorigin="anonymous" defer data-pjax></script>
+
+    <script data-pjax>
+      window.MathJax = {"tex":{"tags":"ams","useLabelIds":true,"inlineMath":[["$","$"],["\\\\(","\\\\)"]],"displayMath":[["$$","$$"],["\\\\[","\\\\]"]],"processEscapes":true,"processEnvironments":true,"autoload":{"color":[],"colorv2":["color"]},"packages":{"[+]":["noerrors"]}},"options":{"skipHtmlTags":["script","noscript","style","textarea","pre","code"],"ignoreHtmlClass":"tex2jax_ignore","processHtmlClass":"tex2jax_process"},"loader":{"load":["input/asciimath","[tex]/noerrors"]}};
+    </script>
+
+
+
+  </body>
+  </html>

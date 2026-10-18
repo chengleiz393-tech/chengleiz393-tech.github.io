@@ -1,0 +1,1271 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  data-theme-mode="auto">
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_ex15nbittbh';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.swPath = '/sw.js';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://chengleiz393-tech.github.io/project';window.REIMU_CONFIG.relative = '/';window.REIMU_CONFIG.dark_mode = {"button":true,"mode":"auto"};</script>
+  <title>
+    逆向视频笔记 | my blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_ex15nbittbh.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="部分视频里说的不重要的或者重复的就没记或简记   1.汇编导论  汇编语言 概念：使用助记符（类似英文单词）来表示机器指令的语言，每条汇编指令直接映射到一条机器指令（汇编语言与硬件架构紧密相关，不同的计算机架构如x86的汇编语言有很大的不同）  MOV表示把数据移到寄存器里面 ADD表示两个数相加   汇编语言的编译过程 汇编语言不能被计算机直接运行，要通过汇编器转化为机器语言。即，把汇编器把汇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逆向视频笔记">
+<meta property="og:url" content="https://chengleiz393-tech.github.io/project/2026/10/10/%E9%80%86%E5%90%91%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="部分视频里说的不重要的或者重复的就没记或简记   1.汇编导论  汇编语言 概念：使用助记符（类似英文单词）来表示机器指令的语言，每条汇编指令直接映射到一条机器指令（汇编语言与硬件架构紧密相关，不同的计算机架构如x86的汇编语言有很大的不同）  MOV表示把数据移到寄存器里面 ADD表示两个数相加   汇编语言的编译过程 汇编语言不能被计算机直接运行，要通过汇编器转化为机器语言。即，把汇编器把汇">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-10T00:11:52.000Z">
+<meta property="article:modified_time" content="2026-10-18T04:27:56.177Z">
+<meta property="article:author" content="Ciallo～">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+    <link rel="alternate" href="/atom.xml" title="my blog" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.3/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+  <body>
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+  <div class="notification-wrapper">
+    <h1>发现新版本</h1>
+    <p>网站好像有新内容，是否更新(ﾟ⊿ﾟ)ﾂ？</p>
+    <div class="notification-btn">
+      <button id="notification-update-btn">更新</button>
+      <button id="notification-close-btn">取消</button>
+    </div>
+  </div>
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+            <div class="main-nav-icon icon rotate">
+                &#xe62b;
+            </div>
+          <span class="main-nav-link">首页</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/archives">
+            <div class="main-nav-icon icon rotate">
+                &#xe62b;
+            </div>
+          <span class="main-nav-link">归档</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/about">
+            <div class="main-nav-icon icon rotate">
+                &#xe62b;
+            </div>
+          <span class="main-nav-link">关于</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/friend">
+            <div class="main-nav-icon icon rotate">
+                &#xe62b;
+            </div>
+          <span class="main-nav-link">友链</span>
+        </a>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+  </nav>
+</div>
+<header id="header" aria-label="Site header">
+        <picture>
+        </picture>
+          <img  fetchpriority="high" src="/images/banner.webp" alt="逆向视频笔记">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">逆向视频笔记</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content" class="sidebar-left"  >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E6%B1%87%E7%BC%96%E5%AF%BC%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text"> 1.汇编导论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text"> 汇编语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%9A%84%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> 汇编语言的编译过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text"> 计算机架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11x86%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 1.1x86架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-arm%E6%9E%B6%E6%9E%84%E5%B8%B8%E7%94%A8%E4%BA%8E%E7%A7%BB%E5%8A%A8%E7%AB%AF"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 1.2 ARM架构（常用于移动端）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-mips%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 1.3 MIPS架构</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text"> 二进制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.1.</span> <span class="toc-text"> 二进制与计算机的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.二进制的表示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E4%B8%8E%E6%88%96%E9%9D%9E"><span class="toc-number">2.3.</span> <span class="toc-text"> 逻辑运算（与，或，非）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text"> 3.原码，反码，补码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E5%8E%9F%E7%A0%81"><span class="toc-number">3.1.</span> <span class="toc-text"> 1.原码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E5%8F%8D%E7%A0%81"><span class="toc-number">3.2.</span> <span class="toc-text"> 2.反码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E8%A1%A5%E7%A0%81"><span class="toc-number">3.3.</span> <span class="toc-text"> 3.补码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80cpu%E5%AF%84%E5%AD%98%E5%99%A8%E5%86%85%E5%AD%98"><span class="toc-number">4.</span> <span class="toc-text"> 5.汇编基础：CPU，寄存器，内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cpu"><span class="toc-number">4.1.</span> <span class="toc-text"> CPU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">4.2.</span> <span class="toc-text"> 寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98ram%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8"><span class="toc-number">4.3.</span> <span class="toc-text"> 内存（RAM主存储器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%80%BB%E7%BA%BF"><span class="toc-number">4.4.</span> <span class="toc-text"> 内存总线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%92%8C%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80"><span class="toc-number">4.5.</span> <span class="toc-text"> 内存和内存地址</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98"><span class="toc-number">4.5.1.</span> <span class="toc-text"> 内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80"><span class="toc-number">4.5.2.</span> <span class="toc-text"> 内存地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E7%9A%84%E5%88%86%E5%9D%97"><span class="toc-number">4.5.3.</span> <span class="toc-text"> 程序内存的分块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.</span> <span class="toc-text"> 6.寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#x86%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.1.</span> <span class="toc-text"> x86寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.2.</span> <span class="toc-text"> 1.通用寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E6%8C%87%E4%BB%A4%E6%8C%87%E9%92%88%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.3.</span> <span class="toc-text"> 3.指令指针寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.4.</span> <span class="toc-text"> 4.标志寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%8E%A7%E5%88%B6%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.5.</span> <span class="toc-text"> 5. 控制寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E6%B5%AE%E7%82%B9%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.6.</span> <span class="toc-text"> 6.浮点寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E8%B0%83%E8%AF%95%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.7.</span> <span class="toc-text"> 7.调试寄存器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-number">6.</span> <span class="toc-text"> 7.汇编指令的基本结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E6%8C%87%E4%BB%A4"><span class="toc-number">6.1.</span> <span class="toc-text"> 1.指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%93%8D%E4%BD%9C%E6%95%B0"><span class="toc-number">6.2.</span> <span class="toc-text"> 2. 操作数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">6.3.</span> <span class="toc-text"> 3.操作符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E6%A0%88%E7%BB%93%E6%9E%84"><span class="toc-number">7.</span> <span class="toc-text"> 8.栈结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E6%A0%88%E7%BB%93%E6%9E%84"><span class="toc-number">7.1.</span> <span class="toc-text"> 1.栈结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E6%A0%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">7.2.</span> <span class="toc-text"> 2.栈的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1push%E5%85%A5%E6%A0%88"><span class="toc-number">7.2.1.</span> <span class="toc-text"> 1.Push（入栈）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2pop%E5%87%BA%E6%A0%88"><span class="toc-number">7.2.2.</span> <span class="toc-text"> 2.Pop（出栈）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E6%A0%88%E5%9C%B0%E5%9D%80%E5%8F%98%E5%8C%96%E9%A1%BB%E7%9F%A5"><span class="toc-number">7.2.3.</span> <span class="toc-text"> 3.栈地址变化须知</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%8C%87%E4%BB%A4"><span class="toc-number">8.</span> <span class="toc-text"> 9.数据传输指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10fs-%E5%92%8Cteb"><span class="toc-number">9.</span> <span class="toc-text"> 10，FS 和TEB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">9.1.</span> <span class="toc-text"> 概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#teb%E9%83%A8%E5%88%86"><span class="toc-number">9.2.</span> <span class="toc-text"> TEB(部分)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%AD%97%E6%AE%B5"><span class="toc-number">9.3.</span> <span class="toc-text"> 主要字段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11%E4%BA%86%E8%A7%A3-tebpeb%E4%B8%8E%E5%8F%8D%E8%B0%83%E8%AF%95"><span class="toc-number">10.</span> <span class="toc-text"> 11.了解 TEB,PEB与反调试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#peb%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86"><span class="toc-number">10.1.</span> <span class="toc-text"> PEB结构（部分）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">10.2.</span> <span class="toc-text"> 总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E8%B0%83%E8%AF%95%E6%8A%80%E6%9C%AF"><span class="toc-number">10.3.</span> <span class="toc-text"> 反调试技术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4"><span class="toc-number">11.</span> <span class="toc-text"> 12.算数运算指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4"><span class="toc-number">11.1.</span> <span class="toc-text"> 基础运算指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13%E4%BD%8D%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="toc-number">12.</span> <span class="toc-text"> 13.位操作指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xor%E6%8C%89%E4%BD%8D%E5%BC%82%E6%88%96"><span class="toc-number">12.1.</span> <span class="toc-text"> XOR（按位异或）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14%E9%80%BB%E8%BE%91%E6%AF%94%E8%BE%83%E6%8C%87%E4%BB%A4"><span class="toc-number">13.</span> <span class="toc-text"> 14.逻辑比较指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-cmp"><span class="toc-number">13.1.</span> <span class="toc-text"> 1. cmp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2test"><span class="toc-number">13.2.</span> <span class="toc-text"> 2.TEST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">13.3.</span> <span class="toc-text"> 3.标志寄存器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15%E6%8E%A7%E5%88%B6%E8%BD%AC%E7%A7%BB%E6%8C%87%E4%BB%A4"><span class="toc-number">14.</span> <span class="toc-text"> 15.控制转移指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16%E6%A0%88%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="toc-number">15.</span> <span class="toc-text"> 16.栈操作指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="toc-number">16.</span> <span class="toc-text"> 17.字符串操作指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mov%E6%8C%87%E4%BB%A4"><span class="toc-number">16.1.</span> <span class="toc-text"> 1. mov指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-rep-movsb-%E6%8C%87%E4%BB%A4"><span class="toc-number">16.2.</span> <span class="toc-text"> 2. rep movsb 指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#movs-%E6%8C%87%E4%BB%A4%E7%AE%80%E4%BB%8B"><span class="toc-number">16.2.1.</span> <span class="toc-text"> movs 指令简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rep-%E7%B3%BB%E5%88%97%E7%9A%84%E4%B8%BB%E8%A6%81%E6%8C%87%E4%BB%A4"><span class="toc-number">16.2.2.</span> <span class="toc-text"> rep 系列的主要指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%BB%84%E5%90%88"><span class="toc-number">16.2.3.</span> <span class="toc-text"> 常见组合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#repe-cmpsb"><span class="toc-number">16.2.4.</span> <span class="toc-text"> repe cmpsb</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#repne-scasb"><span class="toc-number">16.2.5.</span> <span class="toc-text"> repne scasb</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scas"><span class="toc-number">16.3.</span> <span class="toc-text"> scas</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18%E6%B5%AE%E7%82%B9%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4"><span class="toc-number">17.</span> <span class="toc-text"> 18.浮点运算指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-fpufloating-point-unit%E6%B5%AE%E7%82%B9%E8%BF%90%E7%AE%97%E5%8D%95%E5%85%83"><span class="toc-number">17.1.</span> <span class="toc-text"> 1. FPU（Floating Point Unit，浮点运算单元）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2x87-%E6%8C%87%E4%BB%A4%E9%9B%86"><span class="toc-number">17.2.</span> <span class="toc-text"> 2.x87 指令集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3ssesimd%E6%89%A9%E5%B1%95%E6%8C%87%E4%BB%A4%E9%9B%86"><span class="toc-number">17.3.</span> <span class="toc-text"> 3.SSE（SIMD扩展指令集）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E6%B5%AE%E7%82%B9%E5%8A%A0%E8%BD%BD%E6%8C%87%E4%BB%A4-fld"><span class="toc-number">17.4.</span> <span class="toc-text"> 4.浮点加载指令 (FLD)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19%E5%87%BD%E6%95%B0"><span class="toc-number">18.</span> <span class="toc-text"> 19.函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E5%87%BD%E6%95%B0%E5%9C%A8%E4%BB%A3%E7%A0%81%E9%87%8C%E7%9A%84%E6%A0%B7%E5%AD%90"><span class="toc-number">18.1.</span> <span class="toc-text"> 1.函数在代码里的样子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20%E5%87%BD%E6%95%B0%E4%B8%8E%E6%A0%88%E7%BB%93%E6%9E%84"><span class="toc-number">19.</span> <span class="toc-text"> 20.函数与栈结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9B%B8%E5%85%B3%E6%BC%94%E7%A4%BA"><span class="toc-number">19.1.</span> <span class="toc-text"> 函数相关演示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97%E5%87%BD%E6%95%B0"><span class="toc-number">19.2.</span> <span class="toc-text"> 嵌套函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#21%E5%87%BD%E6%95%B0%E5%B5%8C%E5%A5%97"><span class="toc-number">20.</span> <span class="toc-text"> 21.函数嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="toc-number">21.</span> <span class="toc-text"> 22.函数调用约定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95"><span class="toc-number">22.</span> <span class="toc-text"> 23.标志寄存器的高级用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E6%A0%B8%E5%BF%83%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="toc-number">22.1.</span> <span class="toc-text"> 一核心标志位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A1%E8%A6%81%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="toc-number">22.2.</span> <span class="toc-text"> 次要标志位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%BA%A7%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="toc-number">22.3.</span> <span class="toc-text"> 系统级标志位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="toc-number">22.4.</span> <span class="toc-text"> 其他标志位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E8%B7%B3%E8%BD%AC%E6%8C%87%E4%BB%A4%E4%B8%8E%E6%A0%87%E5%BF%97%E4%BD%8D%E7%9A%84%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"><span class="toc-number">22.5.</span> <span class="toc-text"> 条件跳转指令与标志位的对应关系</span></a></li></ol></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Ciallo～" class="lazyload">
+  <div class="sidebar-author-name">Ciallo～</div>
+  <div class="sidebar-description">Ciallo～(∠・ω&lt; )⌒★</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/chengleiz393-tech itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-逆向视频笔记" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2026-10-10T00:11:52.000Z" itemprop="datePublished">2026-10-10</time>
+    <time style="display: none;" id="post-update-time">2026-10-18</time>
+  </span>
+</div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <blockquote>
+<p>部分视频里说的不重要的或者重复的就没记或简记</p>
+</blockquote>
+<h2 id="1汇编导论"><a class="markdownIt-Anchor" href="#1汇编导论"></a> 1.汇编导论</h2>
+<h3 id="汇编语言"><a class="markdownIt-Anchor" href="#汇编语言"></a> 汇编语言</h3>
+<p><strong>概念</strong>：使用<strong>助记符</strong>（类似英文单词）来表示机器指令的语言，<strong>每条汇编指令直接映射到一条机器指令</strong>（汇编语言与硬件架构紧密相关，不同的计算机架构如x86的汇编语言有很大的不同）</p>
+<ul>
+<li><code>MOV</code>表示把数据移到寄存器里面</li>
+<li><code>ADD</code>表示两个数相加</li>
+</ul>
+<h3 id="汇编语言的编译过程"><a class="markdownIt-Anchor" href="#汇编语言的编译过程"></a> 汇编语言的编译过程</h3>
+<p><strong>汇编语言</strong>不能被计算机直接运行，要通过<strong>汇编器</strong>转化为机器语言。即，把汇编器把汇编代码翻译成<strong>二进制</strong>机器指令给CPU执行</p>
+<ul>
+<li>eg:汇编语言里的<code>MOVEAX, 1</code>被汇编器转化为二进制机器指令<code>88 01 00 00 00</code></li>
+</ul>
+<h3 id="计算机架构"><a class="markdownIt-Anchor" href="#计算机架构"></a> 计算机架构</h3>
+<p><strong>概念</strong>：计算机系统的设计结构，包括处理器的内部结构，指令集，寄存器，内存模型等，每种架构定义一组可执行的指令（<strong>指令集架构，ISA</strong>）</p>
+<h4 id="11x86架构"><a class="markdownIt-Anchor" href="#11x86架构"></a> 1.1x86架构</h4>
+<h4 id="12-arm架构常用于移动端"><a class="markdownIt-Anchor" href="#12-arm架构常用于移动端"></a> 1.2 ARM架构（常用于移动端）</h4>
+<h4 id="13-mips架构"><a class="markdownIt-Anchor" href="#13-mips架构"></a> 1.3 MIPS架构</h4>
+<h2 id="二进制"><a class="markdownIt-Anchor" href="#二进制"></a> 二进制</h2>
+<blockquote>
+<p>二进制里面，只有0和1，权值为2的幂次方 eg: 8表示为1000     8=1X2 <sup>3</sup>+0X2<sup>2</sup>+0X2<sup>1</sup>+0X2<sup>0</sup></p>
+</blockquote>
+<h3 id="二进制与计算机的关系"><a class="markdownIt-Anchor" href="#二进制与计算机的关系"></a> 二进制与计算机的关系</h3>
+<p>计算机是基于<strong>电子电路</strong>和<strong>开关</strong>技术工作的，电子设备可以非常容易的区分两种状态：<strong>开</strong>（1），<strong>关</strong>（0）</p>
+<h3 id="2二进制的表示"><a class="markdownIt-Anchor" href="#2二进制的表示"></a> 2.二进制的表示</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1010 0011</span><br></pre></td></tr></table></figure>
+<ul>
+<li>每一个二进制数字称为<strong>bit</strong>，即二进制的基本单位，<strong>8位</strong>二进制数字表示一个<strong>字节</strong>（Byte）</li>
+</ul>
+<h3 id="逻辑运算与或非"><a class="markdownIt-Anchor" href="#逻辑运算与或非"></a> 逻辑运算（与，或，非）</h3>
+<ul>
+<li><strong>AND</strong>（与运算，优先级2）：只有两个对应位都为一结果才是一</li>
+<li><strong>OR</strong>(或运算，优先级3)：是要两个对应位有一个是1结果就是1</li>
+<li><strong>NOT</strong>(非运算，优先级1)：将每个比特取反</li>
+</ul>
+<h2 id="3原码反码补码"><a class="markdownIt-Anchor" href="#3原码反码补码"></a> 3.原码，反码，补码</h2>
+<p><strong>原码，反码，补码</strong>是表述正负数的不同方法，他们是在二进制上的扩展</p>
+<ul>
+<li><strong>原码</strong>：直接通过符号位和数值位组合来表示带符号整数</li>
+<li><strong>反码</strong>：对原码数值部分取反，旨在简化运算中的负数表示</li>
+<li><strong>补码</strong>：是反码加一，它是现代计算机中广泛表示负数的方式</li>
+</ul>
+<blockquote>
+<p><strong>正数</strong>在原码，反码，补码中是一样的，区别主要体现在负数的表示上</p>
+</blockquote>
+<h3 id="1原码"><a class="markdownIt-Anchor" href="#1原码"></a> 1.原码</h3>
+<p><strong>原理</strong>：直接使用<strong>最高位</strong>（即符号位）来表示正负</p>
+<ul>
+<li><strong>符号位</strong>：最高位（最左边）来便是符号<code>0</code>表示正数<code>1</code>表示负数</li>
+</ul>
+<p>eg(用八位表示数字):+5  = <code>00000101</code>    -5 = <code>10000101</code></p>
+<h3 id="2反码"><a class="markdownIt-Anchor" href="#2反码"></a> 2.反码</h3>
+<blockquote>
+<p>反码是对原码的拓展，通过对原码数值部分取反来表示负数</p>
+</blockquote>
+<p>反码表示规则</p>
+<ul>
+<li><strong>正数的反码</strong>：与原码想相同</li>
+<li><strong>负数的反码</strong>：将原码的数值部分逐位取反</li>
+</ul>
+<p>eg: +5 =<code>00000101</code>   -5（原码是<code>10000101</code>） = <code>1(符号位不变)1111010(数值部分取反)</code></p>
+<h3 id="3补码"><a class="markdownIt-Anchor" href="#3补码"></a> 3.补码</h3>
+<p>表示规则</p>
+<ul>
+<li><strong>正数补码</strong>：和原码相同</li>
+<li><strong>负数补码</strong>：原码的数值部分逐位取反然后加一</li>
+</ul>
+<p>eg :+5  = 00000101 -5 (原码<code>10000101</code>)=<code>11111011</code>(先数值部分取反11111010，再加一 <code>11111011</code>)</p>
+<h2 id="5汇编基础cpu寄存器内存"><a class="markdownIt-Anchor" href="#5汇编基础cpu寄存器内存"></a> 5.汇编基础：CPU，寄存器，内存</h2>
+<h3 id="cpu"><a class="markdownIt-Anchor" href="#cpu"></a> CPU</h3>
+<ul>
+<li>负责指挥计算机系统的操作，从内存读取指令，并根据指令进行计算和数据处理</li>
+</ul>
+<h3 id="寄存器"><a class="markdownIt-Anchor" href="#寄存器"></a> 寄存器</h3>
+<ul>
+<li>CPU内部高速存储单元，用于存放<strong>临时数据和计算的中间结果</strong>，具有非常快的访问速度‘</li>
+<li>常用寄存器有<strong>通用寄存器</strong>，<strong>指针寄存器</strong>和<strong>标志寄存器</strong></li>
+</ul>
+<h3 id="内存ram主存储器"><a class="markdownIt-Anchor" href="#内存ram主存储器"></a> 内存（RAM主存储器）</h3>
+<ul>
+<li>空间大，速度慢，放正在运行的程序的数据和指令</li>
+<li>CPU从内存读取和写入指令</li>
+<li>内存通过<strong>内存总线</strong>和其他硬件相连</li>
+</ul>
+<h3 id="内存总线"><a class="markdownIt-Anchor" href="#内存总线"></a> 内存总线</h3>
+<p>链接cpu和内存</p>
+<h3 id="内存和内存地址"><a class="markdownIt-Anchor" href="#内存和内存地址"></a> 内存和内存地址</h3>
+<h4 id="内存"><a class="markdownIt-Anchor" href="#内存"></a> 内存</h4>
+<blockquote>
+<p>用途是存储，但易丢失</p>
+</blockquote>
+<h4 id="内存地址"><a class="markdownIt-Anchor" href="#内存地址"></a> 内存地址</h4>
+<p>内存用内存地址来标号（用十六进制表示）</p>
+<h4 id="程序内存的分块"><a class="markdownIt-Anchor" href="#程序内存的分块"></a> 程序内存的分块</h4>
+<ul>
+<li>
+<p><strong>代码段</strong></p>
+</li>
+<li>
+<p><strong>数据段</strong></p>
+</li>
+<li>
+<p><strong>堆</strong></p>
+</li>
+<li>
+<p><strong>栈</strong></p>
+</li>
+</ul>
+<h2 id="6寄存器"><a class="markdownIt-Anchor" href="#6寄存器"></a> 6.寄存器</h2>
+<h3 id="x86寄存器"><a class="markdownIt-Anchor" href="#x86寄存器"></a> x86寄存器</h3>
+<p>大小和cpu的<strong>位数相关</strong>。32位x86架构，64位x86-64架构的寄存器大小是32（4字节）和64位（8字节）（内存地址相同）</p>
+<h3 id="1通用寄存器"><a class="markdownIt-Anchor" href="#1通用寄存器"></a> 1.通用寄存器</h3>
+<p>x86架构有8个通用寄存器</p>
+<ul>
+<li><strong>EAX</strong>：Windows的代码中通常用来存放结果（返回值）</li>
+<li><strong>EBX</strong>:用于指向数据结构或数据结构的基址</li>
+<li><strong>ECX</strong>:</li>
+<li><strong>EDX</strong>用于存储乘除法的结果</li>
+<li><strong>ESI</strong></li>
+<li><strong>EDI</strong></li>
+<li><strong>EBP</strong>:(栈底)EBP指向栈这种数据结构的底部，所以叫栈底</li>
+<li><strong>ESP</strong>：（栈顶）指向栈这种数据结构的顶部（设计堆栈平衡，非常<strong>重要</strong>）</li>
+</ul>
+<h3 id="3指令指针寄存器"><a class="markdownIt-Anchor" href="#3指令指针寄存器"></a> 3.指令指针寄存器</h3>
+<ul>
+<li><strong>EIP</strong>指向CPU正在执行的<strong>下一条</strong>指令的内存地址（64位架构是<strong>RIP</strong>）</li>
+<li>通过异常处理指令能修改EIP</li>
+<li><strong>VT</strong>技术中对EIP寄存器有虚化，可以对虚化的EIP寄存器进行直接修改</li>
+</ul>
+<h3 id="4标志寄存器"><a class="markdownIt-Anchor" href="#4标志寄存器"></a> 4.标志寄存器</h3>
+<blockquote>
+<p>常见用途是在条件跳转中作为判断依据</p>
+</blockquote>
+<h3 id="5-控制寄存器"><a class="markdownIt-Anchor" href="#5-控制寄存器"></a> 5. 控制寄存器</h3>
+<h3 id="6浮点寄存器"><a class="markdownIt-Anchor" href="#6浮点寄存器"></a> 6.浮点寄存器</h3>
+<h3 id="7调试寄存器"><a class="markdownIt-Anchor" href="#7调试寄存器"></a> 7.调试寄存器</h3>
+<p>x86提供8个调试寄存器编号为<strong>DR0~DR7</strong>(<strong>和硬件断点有关系</strong>)</p>
+<h2 id="7汇编指令的基本结构"><a class="markdownIt-Anchor" href="#7汇编指令的基本结构"></a> 7.汇编指令的基本结构</h2>
+<h3 id="1指令"><a class="markdownIt-Anchor" href="#1指令"></a> 1.指令</h3>
+<blockquote>
+<p>每条指令由操作码和操作数组成</p>
+</blockquote>
+<ul>
+<li><strong>操作码</strong>：告诉cpu执行什么</li>
+<li><strong>操作数</strong>：指定操作对象</li>
+</ul>
+<h3 id="2-操作数"><a class="markdownIt-Anchor" href="#2-操作数"></a> 2. 操作数</h3>
+<p>操作数的类型</p>
+<ul>
+<li><strong>寄存器</strong>：eg mov eax,ebx</li>
+<li><strong>内存地址</strong>：如<code>0x00401000</code></li>
+</ul>
+<p>​      mov eax,0x00401000</p>
+<p>​      mov eax,[0x00401000]  &lt;————方括号[]只能再内存地址上使用，表示取出内存地址的值（拓展：假如<strong>EBX</strong>=0x00401000,那么 mov eax,[ebx]也是合理的）</p>
+<ul>
+<li><strong>立即数</strong>：如<code>5</code> 直接使用一个常数<code>mov eax,5</code></li>
+</ul>
+<h3 id="3操作符"><a class="markdownIt-Anchor" href="#3操作符"></a> 3.操作符</h3>
+<h2 id="8栈结构"><a class="markdownIt-Anchor" href="#8栈结构"></a> 8.栈结构</h2>
+<h3 id="1栈结构"><a class="markdownIt-Anchor" href="#1栈结构"></a> 1.栈结构</h3>
+<ul>
+<li>栈结构是一种有序的数据结构，<strong>只有一个出口</strong></li>
+<li>书局只能在栈的<strong>顶端</strong>插入（如栈）或删除（出站）</li>
+<li>最后进入的数据最先被取出：<strong>先进后出</strong></li>
+</ul>
+<h3 id="2栈的基本操作"><a class="markdownIt-Anchor" href="#2栈的基本操作"></a> 2.栈的基本操作</h3>
+<h4 id="1push入栈"><a class="markdownIt-Anchor" href="#1push入栈"></a> 1.Push（入栈）</h4>
+<ul>
+<li>将数据压入<strong>栈顶</strong></li>
+</ul>
+<h4 id="2pop出栈"><a class="markdownIt-Anchor" href="#2pop出栈"></a> 2.Pop（出栈）</h4>
+<p>将<strong>栈顶</strong>数据移除并返回<strong>放入数据后都是ESP在变化EBP是地基</strong></p>
+<h4 id="3栈地址变化须知"><a class="markdownIt-Anchor" href="#3栈地址变化须知"></a> 3.栈地址变化须知</h4>
+<p>如果不断push数据，栈地址不断变小，不断向上堆积（pop操作则相反）</p>
+<h2 id="9数据传输指令"><a class="markdownIt-Anchor" href="#9数据传输指令"></a> 9.数据传输指令</h2>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>功能</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mov</td>
+<td>将数据从源传输到目的位置</td>
+<td>mov eax, ebx</td>
+</tr>
+<tr>
+<td>push</td>
+<td>数据压入栈</td>
+<td>push eax</td>
+</tr>
+<tr>
+<td>pop</td>
+<td>栈中弹出数据到目的位置</td>
+<td>pop eax</td>
+</tr>
+<tr>
+<td>xchg</td>
+<td>交换两个操作数的值</td>
+<td>xchg eax, ebx</td>
+</tr>
+<tr>
+<td>lea</td>
+<td>取地址</td>
+<td>lea eax, [ebx+4]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="10fs-和teb"><a class="markdownIt-Anchor" href="#10fs-和teb"></a> 10，FS 和TEB</h2>
+<blockquote>
+<p>FS是拓展段寄存器</p>
+</blockquote>
+<h3 id="概念"><a class="markdownIt-Anchor" href="#概念"></a> 概念</h3>
+<p><strong>fs</strong>:<code>fs</code> 是一个<strong>段寄存器</strong>（Segment Register），它用于指向线程的<strong>线程环境块</strong>（TEB，Thread Environment Block）<code>fs</code> 寄存器主要用于访问当前线程的局部存储区域，而不是全局数据</p>
+<h3 id="teb部分"><a class="markdownIt-Anchor" href="#teb部分"></a> TEB(部分)</h3>
+<ul>
+<li>偏移地址为 0x0020</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CLIENT_ID ClientId;   //0x0020  线程的 ClientId（由线程 ID 和进程 ID 组成）</span><br></pre></td></tr></table></figure>
+<ul>
+<li>偏移地址为0x0030</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PVOID ProcessEnvironmentBlock;      // +0x0030  指向进程环境块（PEB）的指针</span><br></pre></td></tr></table></figure>
+<h3 id="主要字段"><a class="markdownIt-Anchor" href="#主要字段"></a> 主要字段</h3>
+<ol>
+<li><code>ClientId</code>：客户端标识符，包含线程的唯一标识符以及其所属的进程 ID。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _CLIENT_ID &#123;</span><br><span class="line">    HANDLE UniqueProcess;  // 进程ID</span><br><span class="line">    HANDLE UniqueThread;   // 线程ID</span><br><span class="line">&#125; CLIENT_ID;</span><br></pre></td></tr></table></figure>
+<h2 id="11了解-tebpeb与反调试"><a class="markdownIt-Anchor" href="#11了解-tebpeb与反调试"></a> 11.了解 TEB,PEB与反调试</h2>
+<blockquote>
+<p>PEB:进程环境块</p>
+</blockquote>
+<h3 id="peb结构部分"><a class="markdownIt-Anchor" href="#peb结构部分"></a> PEB结构（部分）</h3>
+<ul>
+<li>偏移0x002</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UCHAR ReingDebugged;  //是否正在调试</span><br></pre></td></tr></table></figure>
+<ul>
+<li>偏移0x068</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ULONG NtGlobalFlag;   //NtGlobalFlag</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h3>
+<p><strong>附加调试</strong>(影响的东西最少)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UCHAR BeingDebugged; // +0x002 是否正在调试 == 0x1</span><br><span class="line"></span><br><span class="line">ULONG NtGlobalFlag; // +0x068 NtGlobalFlag 不影响</span><br></pre></td></tr></table></figure>
+<p><strong>拖入调试</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UCHAR BeingDebugged; // +0x002 是否正在调试 == 0x1</span><br><span class="line"></span><br><span class="line">ULONG NtGlobalFlag; // +0x068 NtGlobalFlag 0x70</span><br></pre></td></tr></table></figure>
+<h3 id="反调试技术"><a class="markdownIt-Anchor" href="#反调试技术"></a> 反调试技术</h3>
+<blockquote>
+<p>不希望有人破解软件，用<code>UCHAR BeingDebugged;</code>等检测是否被调试。可绕过反调试的检测</p>
+</blockquote>
+<h2 id="12算数运算指令"><a class="markdownIt-Anchor" href="#12算数运算指令"></a> 12.算数运算指令</h2>
+<h3 id="基础运算指令"><a class="markdownIt-Anchor" href="#基础运算指令"></a> 基础运算指令</h3>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>功能</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add</td>
+<td>加</td>
+<td>左减右</td>
+</tr>
+<tr>
+<td>sub</td>
+<td>减</td>
+<td>左加右</td>
+</tr>
+<tr>
+<td>mul</td>
+<td>无符号乘法</td>
+<td><strong>默认EAX作为被乘数，操作数为乘法</strong>，代码<code>mul ecx //等价EAX*ECX</code><strong>低32位在ＥＡＸ高位在ＥＤＸ</strong></td>
+</tr>
+<tr>
+<td>imul</td>
+<td>有符号乘法</td>
+<td>左乘右</td>
+</tr>
+<tr>
+<td>div</td>
+<td>无符号乘法</td>
+<td>被除数默认位ＥＤＸ：ＥＡＸ组成的六十四位数；商存储在ＥＡＸ，余数存储在ＥＤＸ（要确保ＥＤＸ清零）一般在开头要清零EDX</td>
+</tr>
+<tr>
+<td>idiv</td>
+<td>有符号乘法</td>
+<td>被除数默认位ＥＤＸ：ＥＡＸ组成的六十四位数；商存储在ＥＡＸ，余数存储在ＥＤＸ，确保EDX开启CDQ指令</td>
+</tr>
+<tr>
+<td>inc</td>
+<td>自增</td>
+<td>加1</td>
+</tr>
+<tr>
+<td>dec</td>
+<td>自减</td>
+<td>减一</td>
+</tr>
+</tbody>
+</table>
+<h2 id="13位操作指令"><a class="markdownIt-Anchor" href="#13位操作指令"></a> 13.位操作指令</h2>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+<th>例子</th>
+<th>计算逻辑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>and</td>
+<td>按位与</td>
+<td>and eax,0xFF</td>
+<td>对位全位1才是1否则位0</td>
+</tr>
+<tr>
+<td>or</td>
+<td>按位或</td>
+<td>or eax,ebx</td>
+<td>对位有一个为1就为1</td>
+</tr>
+<tr>
+<td>xor</td>
+<td>按位异或</td>
+<td>xor eax, ebx</td>
+<td>对位不相同才为1，否则为0</td>
+</tr>
+<tr>
+<td>not</td>
+<td>按位取反</td>
+<td>not eax</td>
+<td>挨个取反（0变1，1变0）</td>
+</tr>
+<tr>
+<td>shl（高效乘法）</td>
+<td>左移（无符号</td>
+<td>shl eax,移动的位数</td>
+<td>所有数字想左移一位，空位取0最左边丢弃</td>
+</tr>
+<tr>
+<td>shr</td>
+<td>右移（无符号）</td>
+<td>shr eax, 1</td>
+<td>同左移,最右边丢弃</td>
+</tr>
+<tr>
+<td>sal</td>
+<td>左移（有符号，<strong>算术移位</strong>）</td>
+<td>sal eax, 1</td>
+<td>同左移</td>
+</tr>
+<tr>
+<td>sar</td>
+<td>右移（有符号）</td>
+<td>sar eax, 1</td>
+<td>所有位向右移动1位，右移后空出的位置填充符号位（即最左边的位），保持符号位不变。</td>
+</tr>
+<tr>
+<td>rol</td>
+<td>循环左移</td>
+<td>rol eax, 1</td>
+<td>所有位左移一位，最左边补上左移产生的空位</td>
+</tr>
+</tbody>
+</table>
+<h3 id="xor按位异或"><a class="markdownIt-Anchor" href="#xor按位异或"></a> <strong>XOR（按位异或）</strong></h3>
+<p>数据加密/解密（可逆）</p>
+<ul>
+<li>在一些简单的加密算法中，使用 <code>xor</code> 来加密和解密数据。<code>xor</code> 是自反操作，即 <code>A ^ B ^ B = A</code>，因此可以通过相同的操作反转加密数据。</li>
+</ul>
+<h2 id="14逻辑比较指令"><a class="markdownIt-Anchor" href="#14逻辑比较指令"></a> 14.逻辑比较指令</h2>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cmp</code></td>
+<td>比较两个操作数</td>
+</tr>
+<tr>
+<td><code>test</code></td>
+<td>测试（仅设置标志）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-cmp"><a class="markdownIt-Anchor" href="#1-cmp"></a> 1. cmp</h3>
+<p>它会对两个操作数进行减法运算(底层是通过减法来实现),但<strong>不会存储结果</strong>，而是只<strong>更新标志寄存器</strong>。(更新标志寄存器后配合跳转指令进行应用）</p>
+<h3 id="2test"><a class="markdownIt-Anchor" href="#2test"></a> 2.TEST</h3>
+<p>执行“按位与”操作(对位全位1才是1否则位0),<strong>只更新标志寄存器</strong>，<strong>不存储结果</strong></p>
+<ul>
+<li><strong>应用</strong>：检查某些位是否被设置（即是否为 1）</li>
+</ul>
+<h3 id="3标志寄存器"><a class="markdownIt-Anchor" href="#3标志寄存器"></a> 3.标志寄存器</h3>
+<p>存储状态信息作为跳转依据</p>
+<h2 id="15控制转移指令"><a class="markdownIt-Anchor" href="#15控制转移指令"></a> 15.控制转移指令</h2>
+<blockquote>
+<p>控制转变流程和代码的执行逻辑</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jmp</td>
+<td>无条件跳转</td>
+</tr>
+<tr>
+<td>call</td>
+<td>调用子程序</td>
+</tr>
+<tr>
+<td>ret</td>
+<td>返回到调用点</td>
+</tr>
+<tr>
+<td>je/jz</td>
+<td>如果相等（Zero flag置位）跳转</td>
+</tr>
+<tr>
+<td>jne/jnz</td>
+<td>如果不等（Zero flag未置位）跳转</td>
+</tr>
+<tr>
+<td>jg</td>
+<td>如果大于跳转</td>
+</tr>
+<tr>
+<td>jl</td>
+<td>如果小于跳转</td>
+</tr>
+<tr>
+<td>jge</td>
+<td>如果大于等于跳转</td>
+</tr>
+<tr>
+<td>jle</td>
+<td>如果小于等于跳转</td>
+</tr>
+<tr>
+<td>loop</td>
+<td>循环跳转</td>
+</tr>
+</tbody>
+</table>
+<p>在call的代码行按F7能进入子程序</p>
+<p>call的本质</p>
+<ol>
+<li>push返回地址：call执行完的下一行代码的地址</li>
+<li>进入call的内部执行代码（类似调用函数）</li>
+<li>执行完根据 push 的返回地址，返回到 call 下一行的执行代码（ret 起作用）（ret相当于jmp到call下一行代码）</li>
+</ol>
+<p>3.条件跳转</p>
+<p>与 cmp 配合使用，记住几个单词的前缀即可</p>
+<p>z：代表 zero，零</p>
+<p>e：equal，相等</p>
+<p>g：great，大</p>
+<p>L：less，小</p>
+<p>n：not，不</p>
+<p><code>CMP</code>指令会影响以下标志寄存器中的位： <strong>CF、ZF、SF、OF、PF、AF</strong>。</p>
+<h2 id="16栈操作指令"><a class="markdownIt-Anchor" href="#16栈操作指令"></a> 16.栈操作指令</h2>
+<blockquote>
+<p>在32位模式下，栈操作默认是以4字节（32位）为单位。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能描述</th>
+<th>栈指针变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PUSH</td>
+<td>压入栈顶</td>
+<td>ESP -= 4</td>
+</tr>
+<tr>
+<td><strong>POP</strong></td>
+<td>弹出栈顶的值</td>
+<td>ESP += 4</td>
+</tr>
+<tr>
+<td>PUSHAD</td>
+<td>按顺序将通用寄存器（<code>EAX</code>, <code>ECX</code>, <code>EDX</code>, <code>EBX</code>, <code>ESP</code>, <code>EBP</code>, <code>ESI</code>, <code>EDI</code>）的值压入栈。</td>
+<td>ESP -= 32</td>
+</tr>
+<tr>
+<td>popad</td>
+<td>按顺序从栈中弹出值恢复到通用寄存器（<code>EDI</code>, <code>ESI</code>, <code>EBP</code>, <code>ESP</code>（跳过）, <code>EBX</code>, <code>EDX</code>, <code>ECX</code>, <code>EAX</code>）。</td>
+<td>ESP += 32</td>
+</tr>
+<tr>
+<td><strong>PUSHFD</strong></td>
+<td>将32位标志寄存器（<code>EFLAGS</code>）压入栈。</td>
+<td>ESP -= 4</td>
+</tr>
+<tr>
+<td><strong>POPFD</strong></td>
+<td>从栈中弹出值并恢复到32位标志寄存器（<code>EFLAGS</code>）。</td>
+<td>ESP += 4</td>
+</tr>
+<tr>
+<td><strong>CALL 地址</strong></td>
+<td>把指令返回地址压入栈顶</td>
+<td>ESP -= 4</td>
+</tr>
+<tr>
+<td><strong>RET</strong></td>
+<td>从栈中弹出返回地址并跳转到该地址。（在子程序里再push掩埋地址则不能正常返回）</td>
+<td><code>ESP += 4</code>（或更多）</td>
+</tr>
+<tr>
+<td><strong>LEAVE</strong></td>
+<td>恢复栈帧：将 <code>EBP</code> 的值恢复到 <code>ESP</code>，然后弹出原 <code>EBP</code>。（相当与MOV ESP, EBP  POP EBP ，节省内存）</td>
+<td>ESP += 局部变量大小</td>
+</tr>
+</tbody>
+</table>
+<h2 id="17字符串操作指令"><a class="markdownIt-Anchor" href="#17字符串操作指令"></a> 17.字符串操作指令</h2>
+<h3 id="1-mov指令"><a class="markdownIt-Anchor" href="#1-mov指令"></a> 1. mov指令</h3>
+<p>作用：赋值</p>
+<h3 id="2-rep-movsb-指令"><a class="markdownIt-Anchor" href="#2-rep-movsb-指令"></a> 2. <code>rep movsb</code> <strong>指令</strong></h3>
+<p><strong>作用</strong>：批量复制字符串数据。</p>
+<blockquote>
+<p>在 x32dbg 中监视 rep，需要用到 F7，而不是 F8</p>
+</blockquote>
+<h4 id="movs-指令简介"><a class="markdownIt-Anchor" href="#movs-指令简介"></a> <code>movs</code> 指令简介</h4>
+<ol>
+<li><code>movsb</code>：移动一个字节</li>
+<li>movsw：移动一个字</li>
+<li>movsd：移动一个双字</li>
+<li>movsq（64 位模式下可用）：移动一个四字（q 表示 quad word，8 字节）。</li>
+</ol>
+<h4 id="rep-系列的主要指令"><a class="markdownIt-Anchor" href="#rep-系列的主要指令"></a> <code>rep</code> 系列的主要指令</h4>
+<ol>
+<li><code>rep</code> <strong>(Repeat【重复】)</strong></li>
+</ol>
+<p><strong>作用</strong>：重复执行后续字符串操作指令（如 <code>movsb</code>、<code>stosb</code>、<code>lodsb</code> 等），直到 <code>ECX</code>（或 <code>CX</code>）寄存器的值减为 0。</p>
+<h4 id="常见组合"><a class="markdownIt-Anchor" href="#常见组合"></a> 常见组合</h4>
+<ol>
+<li>
+<h4 id="repe-cmpsb"><a class="markdownIt-Anchor" href="#repe-cmpsb"></a> repe cmpsb</h4>
+<ul>
+<li>执行条件：字节相等（<code>ZF = 1</code>）   计数器 <code>ECX</code> 未减到 0。</li>
+</ul>
+</li>
+<li>
+<h4 id="repne-scasb"><a class="markdownIt-Anchor" href="#repne-scasb"></a> <code>repne scasb</code></h4>
+<ul>
+<li>在一个字符串中搜索某个字节，直到找到匹配的字节，或者 <code>ECX</code> 减为 0</li>
+</ul>
+</li>
+<li>
+<h3 id="scas"><a class="markdownIt-Anchor" href="#scas"></a> <code>scas</code></h3>
+</li>
+</ol>
+<p><strong>作用</strong>：扫描字符串中的特定字符。</p>
+<h2 id="18浮点运算指令"><a class="markdownIt-Anchor" href="#18浮点运算指令"></a> 18.浮点运算指令</h2>
+<blockquote>
+<p>dword:单浮点；qword:双浮点</p>
+</blockquote>
+<h3 id="1-fpufloating-point-unit浮点运算单元"><a class="markdownIt-Anchor" href="#1-fpufloating-point-unit浮点运算单元"></a> <strong>1. FPU（Floating Point Unit，浮点运算单元）</strong></h3>
+<ul>
+<li>
+<p><strong>定义</strong>: FPU 是处理器中的一个硬件模块，专门负责浮点运算。</p>
+</li>
+<li>
+<p>从 80486 开始，FPU 集成进了 CPU 内核中。</p>
+</li>
+<li>
+<p>组成：</p>
+<p><strong>寄存器堆栈</strong>:</p>
+</li>
+</ul>
+<p>​		<strong>8 个 80 位宽的浮点寄存器</strong>（ST0-ST7），以堆栈形式组织。</p>
+<ul>
+<li>存储：<code>FLD</code> 指令会将单精度浮点数转换为 80 位扩展精度格式（内部格式）。</li>
+</ul>
+<h3 id="2x87-指令集"><a class="markdownIt-Anchor" href="#2x87-指令集"></a> <strong>2.x87 指令集</strong></h3>
+<ul>
+<li>
+<p><strong>定义</strong>: x87 是专门为 FPU 设计的一套指令集，早期专用于处理浮点运算。</p>
+</li>
+<li>
+<p>特点：指令风格通常是 <code>Fxxx</code> 开头，比如 <code>FLD</code>（加载浮点数）、<code>FADD</code>（浮点加法）。</p>
+</li>
+</ul>
+<h3 id="3ssesimd扩展指令集"><a class="markdownIt-Anchor" href="#3ssesimd扩展指令集"></a> 3.SSE（SIMD扩展指令集）</h3>
+<ul>
+<li>特点：采用 <strong>xmm</strong> 寄存器（每个 128 位宽）。它不依赖 FPU，也不与 <code>x87</code> 堆栈共享资源。</li>
+</ul>
+<h3 id="4浮点加载指令-fld"><a class="markdownIt-Anchor" href="#4浮点加载指令-fld"></a> 4.<strong>浮点加载指令 (FLD)</strong></h3>
+<h2 id="19函数"><a class="markdownIt-Anchor" href="#19函数"></a> 19.函数</h2>
+<blockquote>
+<p>代码逻辑的最小单元，功能是封装可复用的代码</p>
+</blockquote>
+<h3 id="1函数在代码里的样子"><a class="markdownIt-Anchor" href="#1函数在代码里的样子"></a> 1.函数在代码里的样子</h3>
+<p><strong>外层看：一个地址标识的入口</strong></p>
+<p>call xxxx  相当于入口，xxx是地址</p>
+<p><strong>内层看：待执行的带代码集合</strong></p>
+<h2 id="20函数与栈结构"><a class="markdownIt-Anchor" href="#20函数与栈结构"></a> 20.函数与栈结构</h2>
+<blockquote>
+<p>函数的结构全是栈结构（esp顶，ebp底）</p>
+</blockquote>
+<h3 id="函数相关演示"><a class="markdownIt-Anchor" href="#函数相关演示"></a> 函数相关演示</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">;函数入口（头部）</span><br><span class="line">push ebp   ;保存上一函数的栈指针</span><br><span class="line">mov ebp,esp ;设置当前栈帧基址</span><br><span class="line">sub esp,0x10 ;为局部变量分配空间</span><br><span class="line"></span><br><span class="line">；函数退出尾部</span><br><span class="line">mov esp,ebp</span><br><span class="line">pop ebp</span><br><span class="line">ret</span><br></pre></td></tr></table></figure>
+<h3 id="嵌套函数"><a class="markdownIt-Anchor" href="#嵌套函数"></a> 嵌套函数</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">;函数入口（头部）</span><br><span class="line">push ebp   ;保存上一函数的栈指针</span><br><span class="line">mov ebp,esp ;设置当前栈帧基址</span><br><span class="line"></span><br><span class="line">push 3   ；压入call的参数</span><br><span class="line">push 4</span><br><span class="line">call 加法函数，401041</span><br><span class="line"></span><br><span class="line">；函数退出尾部</span><br><span class="line">mov esp,ebp</span><br><span class="line">pop ebp</span><br><span class="line">ret</span><br></pre></td></tr></table></figure>
+<p>参数：在函数内部看到ebp+xxx（函数的参数）</p>
+<p>局部变量：在函数内部看到ebp-xxx（函数的局部变量）（用于在内部进行复制和临时计算，函数退出后，变量会失效）</p>
+<blockquote>
+<p>每次函数调用的时候都会生成一个新的栈结构</p>
+</blockquote>
+<h2 id="21函数嵌套"><a class="markdownIt-Anchor" href="#21函数嵌套"></a> 21.函数嵌套</h2>
+<p>看函数结构，重点看ebp，上面是局部变量，下面除了返回地址，就是参数</p>
+<blockquote>
+<p>ebp是栈帧的锚点，esp始终指向站点</p>
+<ul>
+<li>通过ebp+偏移访问参数，ebp-偏移访问局部变量</li>
+</ul>
+</blockquote>
+<h2 id="22函数调用约定"><a class="markdownIt-Anchor" href="#22函数调用约定"></a> 22.函数调用约定</h2>
+<blockquote>
+<p>决定了函数参数如何传递，栈如何管理，以及局部变量如何分配</p>
+<p>简单来说就是不同种类的call</p>
+</blockquote>
+<ol>
+<li>cdecl(windows 下都是外平线)（c调用约定）</li>
+</ol>
+<ul>
+<li>参数从左到右依次压入</li>
+<li>返回值给eax寄存器</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">push 3  ;第二个参数</span><br><span class="line">push 2  ;第一个参数</span><br><span class="line">call Xxx；调用函数</span><br><span class="line">add esp,0xc  ;调用者清理栈</span><br></pre></td></tr></table></figure>
+<p>push的时候，esp是不断减少的</p>
+<p>所以恢复栈地址的时候需要<code>add esp xxx</code></p>
+<ol start="2">
+<li>stdcall(标准调用约定)</li>
+</ol>
+<ul>
+<li>参数从右往左压栈</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">push 3</span><br><span class="line">push 2</span><br><span class="line">call xxx</span><br><span class="line">;无需清理栈</span><br><span class="line"></span><br><span class="line">xxx:</span><br><span class="line">	......</span><br><span class="line">	......</span><br><span class="line">	retn 0xc   ;被调用者清理栈（内平栈）</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>fastcall</li>
+</ol>
+<ul>
+<li>参数传递：前两个参数通过寄存器（ecx和edx)其余参数从右到左压栈</li>
+<li>返回值是：eax寄存器</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov ecx,3  ;第一个参数</span><br><span class="line">mov edx,2  ；第二给参数</span><br><span class="line">push 1</span><br><span class="line">call xxx</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>thiscall(c++成员函数调用)</li>
+</ol>
+<ul>
+<li>参数传递：this 指针通过ecx 传递</li>
+<li>h返回值：eax 寄存器</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mov ecx,obj_ptr ;this指针存入ecx</span><br><span class="line">push 2</span><br><span class="line">push 1</span><br><span class="line">call xxx</span><br><span class="line">add esp,8       ;调用者清理栈</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>重点关注ecx</p>
+</blockquote>
+<h2 id="23标志寄存器的高级用法"><a class="markdownIt-Anchor" href="#23标志寄存器的高级用法"></a> 23.标志寄存器的高级用法</h2>
+<h3 id="一核心标志位"><a class="markdownIt-Anchor" href="#一核心标志位"></a> 一核心标志位</h3>
+<ol>
+<li>zf(零标志)</li>
+</ol>
+<ul>
+<li>含义：运算结果为0的时候置1</li>
+<li>触发指令：<code>cmp</code>,<code>test</code>等</li>
+</ul>
+<ol start="2">
+<li>cf(进位标志)</li>
+</ol>
+<ul>
+<li>含义：无符号运算产生进位或错位时置1</li>
+<li>触发指令：<code>add</code>,<code>sub</code>等</li>
+</ul>
+<ol start="3">
+<li>sf(符号标志)</li>
+</ol>
+<ul>
+<li>含义：运算结果的最高位为1（表示负数）时置1</li>
+<li>触发指令：<code>add</code>,<code>cmp</code>等</li>
+</ul>
+<ol start="4">
+<li>of(溢出标置)</li>
+</ol>
+<ul>
+<li>有符号数运算结果超出范围时置1</li>
+</ul>
+<h3 id="次要标志位"><a class="markdownIt-Anchor" href="#次要标志位"></a> 次要标志位</h3>
+<h3 id="系统级标志位"><a class="markdownIt-Anchor" href="#系统级标志位"></a> 系统级标志位</h3>
+<h3 id="其他标志位"><a class="markdownIt-Anchor" href="#其他标志位"></a> 其他标志位</h3>
+<h3 id="条件跳转指令与标志位的对应关系"><a class="markdownIt-Anchor" href="#条件跳转指令与标志位的对应关系"></a> 条件跳转指令与标志位的对应关系</h3>
+<blockquote>
+<p>条件跳转指令会根据标志位组合来判断是否跳转</p>
+</blockquote>
+<p><strong>JCC指令</strong></p>
+<p>指x86汇编语言中一类跳转指令，通过检查标志位的状态来确定是否跳转指定的目标地址；</p>
+<p>JCC指条件跳转指令cc指条件码</p>
+<ol>
+<li>基于zf的跳转</li>
+</ol>
+<ul>
+<li>JZ/JE/JNZ/JNE</li>
+</ul>
+
+    </div>
+    <footer class="article-footer">
+        <blockquote class="article-copyright">
+    <p><strong><span class="icon-user icon"></span>本文作者：</strong>Ciallo～</p>
+    <p><strong><span class="icon-link icon"></span>本文链接：</strong><a href="https://chengleiz393-tech.github.io/project/2026/10/10/%E9%80%86%E5%90%91%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/">https://chengleiz393-tech.github.io/project/2026/10/10/%E9%80%86%E5%90%91%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/</a></p>
+    <p><strong><span class="icon-pencil icon"></span>本文标题：</strong>「逆向视频笔记」</p>
+    <p><strong><span class="icon-calendar icon"></span>本文发布时间：</strong>2026-10-10 08:11:52</p>
+    <p><strong><span class="icon-calendar icon"></span>本文更新时间：</strong>2026-10-18 12:27:56</p>
+    <p><strong><span class="icon-copyright icon"></span>本文版权：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> 许可协议。转载请注明出处！</p>
+    <span class="icon-creative-commons article-copyright-bg"></span>
+  </blockquote>
+        <a class="article-category-link" href="/categories/Re/" title="Re" data-aos="zoom-in">Re</a>
+
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag" title="笔记">笔记</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+            <img data-src="https://d-sketon.top/img/_backwebp/bg1.webp" data-sizes="auto" alt="接口与逻辑漏洞" class="lazyload">
+        <a href="/2026/10/15/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/" aria-label="前一篇: 接口与逻辑漏洞" title="前一篇: 接口与逻辑漏洞"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            接口与逻辑漏洞
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+          <img data-src="https://d-sketon.top/img/_backwebp/bg1.webp" data-sizes="auto" alt="sql注入" class="lazyload">
+      <a href="/2026/09/24/sql%E6%B3%A8%E5%85%A5/" aria-label="后一篇: sql注入"  title="后一篇: sql注入"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          sql注入
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2026
+        <span class="footer-info-sep rotate"></span>
+      Ciallo～
+    </div>
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+      <div>
+        <span class="icon-brush"></span>
+        9.8k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        00:43
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E6%B1%87%E7%BC%96%E5%AF%BC%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text"> 1.汇编导论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text"> 汇编语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%9A%84%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> 汇编语言的编译过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text"> 计算机架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11x86%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 1.1x86架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-arm%E6%9E%B6%E6%9E%84%E5%B8%B8%E7%94%A8%E4%BA%8E%E7%A7%BB%E5%8A%A8%E7%AB%AF"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 1.2 ARM架构（常用于移动端）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-mips%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 1.3 MIPS架构</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text"> 二进制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.1.</span> <span class="toc-text"> 二进制与计算机的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.二进制的表示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E4%B8%8E%E6%88%96%E9%9D%9E"><span class="toc-number">2.3.</span> <span class="toc-text"> 逻辑运算（与，或，非）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text"> 3.原码，反码，补码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E5%8E%9F%E7%A0%81"><span class="toc-number">3.1.</span> <span class="toc-text"> 1.原码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E5%8F%8D%E7%A0%81"><span class="toc-number">3.2.</span> <span class="toc-text"> 2.反码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E8%A1%A5%E7%A0%81"><span class="toc-number">3.3.</span> <span class="toc-text"> 3.补码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80cpu%E5%AF%84%E5%AD%98%E5%99%A8%E5%86%85%E5%AD%98"><span class="toc-number">4.</span> <span class="toc-text"> 5.汇编基础：CPU，寄存器，内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cpu"><span class="toc-number">4.1.</span> <span class="toc-text"> CPU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">4.2.</span> <span class="toc-text"> 寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98ram%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8"><span class="toc-number">4.3.</span> <span class="toc-text"> 内存（RAM主存储器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%80%BB%E7%BA%BF"><span class="toc-number">4.4.</span> <span class="toc-text"> 内存总线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%92%8C%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80"><span class="toc-number">4.5.</span> <span class="toc-text"> 内存和内存地址</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98"><span class="toc-number">4.5.1.</span> <span class="toc-text"> 内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80"><span class="toc-number">4.5.2.</span> <span class="toc-text"> 内存地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E7%9A%84%E5%88%86%E5%9D%97"><span class="toc-number">4.5.3.</span> <span class="toc-text"> 程序内存的分块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.</span> <span class="toc-text"> 6.寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#x86%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.1.</span> <span class="toc-text"> x86寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.2.</span> <span class="toc-text"> 1.通用寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E6%8C%87%E4%BB%A4%E6%8C%87%E9%92%88%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.3.</span> <span class="toc-text"> 3.指令指针寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.4.</span> <span class="toc-text"> 4.标志寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%8E%A7%E5%88%B6%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.5.</span> <span class="toc-text"> 5. 控制寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E6%B5%AE%E7%82%B9%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.6.</span> <span class="toc-text"> 6.浮点寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E8%B0%83%E8%AF%95%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">5.7.</span> <span class="toc-text"> 7.调试寄存器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-number">6.</span> <span class="toc-text"> 7.汇编指令的基本结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E6%8C%87%E4%BB%A4"><span class="toc-number">6.1.</span> <span class="toc-text"> 1.指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%93%8D%E4%BD%9C%E6%95%B0"><span class="toc-number">6.2.</span> <span class="toc-text"> 2. 操作数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">6.3.</span> <span class="toc-text"> 3.操作符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E6%A0%88%E7%BB%93%E6%9E%84"><span class="toc-number">7.</span> <span class="toc-text"> 8.栈结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E6%A0%88%E7%BB%93%E6%9E%84"><span class="toc-number">7.1.</span> <span class="toc-text"> 1.栈结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E6%A0%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">7.2.</span> <span class="toc-text"> 2.栈的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1push%E5%85%A5%E6%A0%88"><span class="toc-number">7.2.1.</span> <span class="toc-text"> 1.Push（入栈）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2pop%E5%87%BA%E6%A0%88"><span class="toc-number">7.2.2.</span> <span class="toc-text"> 2.Pop（出栈）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E6%A0%88%E5%9C%B0%E5%9D%80%E5%8F%98%E5%8C%96%E9%A1%BB%E7%9F%A5"><span class="toc-number">7.2.3.</span> <span class="toc-text"> 3.栈地址变化须知</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%8C%87%E4%BB%A4"><span class="toc-number">8.</span> <span class="toc-text"> 9.数据传输指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10fs-%E5%92%8Cteb"><span class="toc-number">9.</span> <span class="toc-text"> 10，FS 和TEB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">9.1.</span> <span class="toc-text"> 概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#teb%E9%83%A8%E5%88%86"><span class="toc-number">9.2.</span> <span class="toc-text"> TEB(部分)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%AD%97%E6%AE%B5"><span class="toc-number">9.3.</span> <span class="toc-text"> 主要字段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11%E4%BA%86%E8%A7%A3-tebpeb%E4%B8%8E%E5%8F%8D%E8%B0%83%E8%AF%95"><span class="toc-number">10.</span> <span class="toc-text"> 11.了解 TEB,PEB与反调试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#peb%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86"><span class="toc-number">10.1.</span> <span class="toc-text"> PEB结构（部分）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">10.2.</span> <span class="toc-text"> 总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E8%B0%83%E8%AF%95%E6%8A%80%E6%9C%AF"><span class="toc-number">10.3.</span> <span class="toc-text"> 反调试技术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4"><span class="toc-number">11.</span> <span class="toc-text"> 12.算数运算指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4"><span class="toc-number">11.1.</span> <span class="toc-text"> 基础运算指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13%E4%BD%8D%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="toc-number">12.</span> <span class="toc-text"> 13.位操作指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xor%E6%8C%89%E4%BD%8D%E5%BC%82%E6%88%96"><span class="toc-number">12.1.</span> <span class="toc-text"> XOR（按位异或）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14%E9%80%BB%E8%BE%91%E6%AF%94%E8%BE%83%E6%8C%87%E4%BB%A4"><span class="toc-number">13.</span> <span class="toc-text"> 14.逻辑比较指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-cmp"><span class="toc-number">13.1.</span> <span class="toc-text"> 1. cmp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2test"><span class="toc-number">13.2.</span> <span class="toc-text"> 2.TEST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">13.3.</span> <span class="toc-text"> 3.标志寄存器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15%E6%8E%A7%E5%88%B6%E8%BD%AC%E7%A7%BB%E6%8C%87%E4%BB%A4"><span class="toc-number">14.</span> <span class="toc-text"> 15.控制转移指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16%E6%A0%88%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="toc-number">15.</span> <span class="toc-text"> 16.栈操作指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="toc-number">16.</span> <span class="toc-text"> 17.字符串操作指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mov%E6%8C%87%E4%BB%A4"><span class="toc-number">16.1.</span> <span class="toc-text"> 1. mov指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-rep-movsb-%E6%8C%87%E4%BB%A4"><span class="toc-number">16.2.</span> <span class="toc-text"> 2. rep movsb 指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#movs-%E6%8C%87%E4%BB%A4%E7%AE%80%E4%BB%8B"><span class="toc-number">16.2.1.</span> <span class="toc-text"> movs 指令简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rep-%E7%B3%BB%E5%88%97%E7%9A%84%E4%B8%BB%E8%A6%81%E6%8C%87%E4%BB%A4"><span class="toc-number">16.2.2.</span> <span class="toc-text"> rep 系列的主要指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%BB%84%E5%90%88"><span class="toc-number">16.2.3.</span> <span class="toc-text"> 常见组合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#repe-cmpsb"><span class="toc-number">16.2.4.</span> <span class="toc-text"> repe cmpsb</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#repne-scasb"><span class="toc-number">16.2.5.</span> <span class="toc-text"> repne scasb</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scas"><span class="toc-number">16.3.</span> <span class="toc-text"> scas</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18%E6%B5%AE%E7%82%B9%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4"><span class="toc-number">17.</span> <span class="toc-text"> 18.浮点运算指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-fpufloating-point-unit%E6%B5%AE%E7%82%B9%E8%BF%90%E7%AE%97%E5%8D%95%E5%85%83"><span class="toc-number">17.1.</span> <span class="toc-text"> 1. FPU（Floating Point Unit，浮点运算单元）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2x87-%E6%8C%87%E4%BB%A4%E9%9B%86"><span class="toc-number">17.2.</span> <span class="toc-text"> 2.x87 指令集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3ssesimd%E6%89%A9%E5%B1%95%E6%8C%87%E4%BB%A4%E9%9B%86"><span class="toc-number">17.3.</span> <span class="toc-text"> 3.SSE（SIMD扩展指令集）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E6%B5%AE%E7%82%B9%E5%8A%A0%E8%BD%BD%E6%8C%87%E4%BB%A4-fld"><span class="toc-number">17.4.</span> <span class="toc-text"> 4.浮点加载指令 (FLD)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19%E5%87%BD%E6%95%B0"><span class="toc-number">18.</span> <span class="toc-text"> 19.函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E5%87%BD%E6%95%B0%E5%9C%A8%E4%BB%A3%E7%A0%81%E9%87%8C%E7%9A%84%E6%A0%B7%E5%AD%90"><span class="toc-number">18.1.</span> <span class="toc-text"> 1.函数在代码里的样子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20%E5%87%BD%E6%95%B0%E4%B8%8E%E6%A0%88%E7%BB%93%E6%9E%84"><span class="toc-number">19.</span> <span class="toc-text"> 20.函数与栈结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9B%B8%E5%85%B3%E6%BC%94%E7%A4%BA"><span class="toc-number">19.1.</span> <span class="toc-text"> 函数相关演示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97%E5%87%BD%E6%95%B0"><span class="toc-number">19.2.</span> <span class="toc-text"> 嵌套函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#21%E5%87%BD%E6%95%B0%E5%B5%8C%E5%A5%97"><span class="toc-number">20.</span> <span class="toc-text"> 21.函数嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="toc-number">21.</span> <span class="toc-text"> 22.函数调用约定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95"><span class="toc-number">22.</span> <span class="toc-text"> 23.标志寄存器的高级用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E6%A0%B8%E5%BF%83%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="toc-number">22.1.</span> <span class="toc-text"> 一核心标志位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A1%E8%A6%81%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="toc-number">22.2.</span> <span class="toc-text"> 次要标志位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%BA%A7%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="toc-number">22.3.</span> <span class="toc-text"> 系统级标志位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="toc-number">22.4.</span> <span class="toc-text"> 其他标志位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E8%B7%B3%E8%BD%AC%E6%8C%87%E4%BB%A4%E4%B8%8E%E6%A0%87%E5%BF%97%E4%BD%8D%E7%9A%84%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"><span class="toc-number">22.5.</span> <span class="toc-text"> 条件跳转指令与标志位的对应关系</span></a></li></ol></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Ciallo～" class="lazyload">
+  <div class="sidebar-author-name">Ciallo～</div>
+  <div class="sidebar-description">Ciallo～(∠・ω&lt; )⌒★</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/chengleiz393-tech itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png" loading="lazy" decoding="async" fetchpriority="low"/>
+        </div>
+      </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+  <script>
+    var setupFirework = () => {
+      if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+        window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+      }
+    }
+  </script>
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.2.0/dist/index.umd.js" integrity="sha384-qi9WggRt19tv8Vc7pCHW3ulMNLwrn515zaLEWZjl1px07vz8+pUoWX8n1rgq282T" crossorigin="anonymous" onload="setupFirework()" defer></script>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/live2d-widgets@0.9.0/autoload.js" integrity="sha384-poTN7wN&#x2F;SqNhQqo3jdFeX20ikddWeFGkUkDEzsKjgH&#x2F;ez8aQLn81oI0Cw6q5xNyB" crossorigin="anonymous"></script>
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "Ciallo～",
+          title: "逆向视频笔记",
+          url: "https://chengleiz393-tech.github.io/project/2026/10/10/%E9%80%86%E5%90%91%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/",
+          excerpt: "",
+          description: "",
+          stripContent: " 部分视频里说的不重要的或者重复的就没记或简记   1.汇编导论  汇编语言 概念：使用助记符（类似英文单词）来表示机器指令的语言，每条汇编指令直接映射到一条机器指令（汇编语言与硬件架构紧密相关，不同的计算机架构如x86的汇编语言有很大的不同）  MOV表示把数据移到寄存器里面 ADD表示两个数相加   汇编语言的编译过程 汇编语言不能被计算机直接运行，要通过汇编器转化为机器语言。即，把汇编器把汇编代码翻译成二进制机器指令给CPU执行  eg:汇编语言里的MOVEAX, 1被汇编器转化为二进制机",
+          date: "Sat Oct 10 2026 08:11:52 GMT+0800",
+          updated: "Sun Oct 18 2026 12:27:56 GMT+0800",
+          cover: "/images/banner.webp",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      
+<script src="/js/tabs.js" data-pjax defer></script>
+
+      <script type="module" data-pjax>
+        (async () => {
+          const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+          const initPswp = (gallery, children) => {
+            if (_$$(`${gallery} ${children}`).length > 0) {
+              new PhotoSwipeLightbox({
+                gallery,
+                children,
+                pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+              }).init();
+            }
+          }
+          const pswp = () => {
+            initPswp('.article-entry', 'a.article-gallery-item');
+            initPswp('.article-gallery', 'a.article-gallery-item');
+          }
+          pswp();
+        })();
+      </script>
+        
+
+
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.12.6' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+  
+<script src="/js/service_worker.js"></script>
+
+
+
+    
+<script src="https://npm.webcache.cn/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6&#x2F;1Nxveei" crossorigin="anonymous" defer data-pjax></script>
+
+    <script data-pjax>
+      window.MathJax = {"tex":{"tags":"ams","useLabelIds":true,"inlineMath":[["$","$"],["\\\\(","\\\\)"]],"displayMath":[["$$","$$"],["\\\\[","\\\\]"]],"processEscapes":true,"processEnvironments":true,"autoload":{"color":[],"colorv2":["color"]},"packages":{"[+]":["noerrors"]}},"options":{"skipHtmlTags":["script","noscript","style","textarea","pre","code"],"ignoreHtmlClass":"tex2jax_ignore","processHtmlClass":"tex2jax_process"},"loader":{"load":["input/asciimath","[tex]/noerrors"]}};
+    </script>
+
+
+
+  </body>
+  </html>

@@ -1,0 +1,952 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  data-theme-mode="auto">
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_ex15nbittbh';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.swPath = '/sw.js';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://chengleiz393-tech.github.io/project';window.REIMU_CONFIG.relative = '/';window.REIMU_CONFIG.dark_mode = {"button":true,"mode":"auto"};</script>
+  <title>
+    HTTP协议 | my blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_ex15nbittbh.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="HTTP协议  HTTP是什么 HTTP：超文本传输协议  1.1超文本 超文本是图片，文章，压缩包和超链接的集合体。 HTML就是典型的超链接。  1.2 传送 HTTP是双向的：浏览器能给网站穿请求，网站能给浏览器返回内容。  1.3 协议 协议就是双方约定好的暗号等  1.4 HTTP的模型：客户端&#x2F;服务端 HTTp基于客户端&#x2F;服务端：浏览器是客户端，发起请求；网站是服务端响应请求。 特点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP协议">
+<meta property="og:url" content="https://chengleiz393-tech.github.io/project/2026/09/19/HTTP%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="HTTP协议  HTTP是什么 HTTP：超文本传输协议  1.1超文本 超文本是图片，文章，压缩包和超链接的集合体。 HTML就是典型的超链接。  1.2 传送 HTTP是双向的：浏览器能给网站穿请求，网站能给浏览器返回内容。  1.3 协议 协议就是双方约定好的暗号等  1.4 HTTP的模型：客户端&#x2F;服务端 HTTp基于客户端&#x2F;服务端：浏览器是客户端，发起请求；网站是服务端响应请求。 特点">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-09-19T03:30:36.000Z">
+<meta property="article:modified_time" content="2026-09-21T10:27:14.215Z">
+<meta property="article:author" content="Ciallo～">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+    <link rel="alternate" href="/atom.xml" title="my blog" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.3/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+  <body>
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+  <div class="notification-wrapper">
+    <h1>发现新版本</h1>
+    <p>网站好像有新内容，是否更新(ﾟ⊿ﾟ)ﾂ？</p>
+    <div class="notification-btn">
+      <button id="notification-update-btn">更新</button>
+      <button id="notification-close-btn">取消</button>
+    </div>
+  </div>
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+            <div class="main-nav-icon icon rotate">
+                &#xe62b;
+            </div>
+          <span class="main-nav-link">首页</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/archives">
+            <div class="main-nav-icon icon rotate">
+                &#xe62b;
+            </div>
+          <span class="main-nav-link">归档</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/about">
+            <div class="main-nav-icon icon rotate">
+                &#xe62b;
+            </div>
+          <span class="main-nav-link">关于</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/friend">
+            <div class="main-nav-icon icon rotate">
+                &#xe62b;
+            </div>
+          <span class="main-nav-link">友链</span>
+        </a>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+  </nav>
+</div>
+<header id="header" aria-label="Site header">
+        <picture>
+        </picture>
+          <img  fetchpriority="high" src="/images/banner.webp" alt="HTTP协议">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">HTTP协议</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content" class="sidebar-left"  >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#http%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.</span> <span class="toc-text"> HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#http%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.</span> <span class="toc-text"> HTTP是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11%E8%B6%85%E6%96%87%E6%9C%AC"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 1.1超文本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E4%BC%A0%E9%80%81"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 1.2 传送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 1.3 协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-http%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 1.4 HTTP的模型：客户端&#x2F;服务端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BD%91%E5%9D%80%E4%B8%BD%E6%9C%89%E4%BB%80%E4%B9%88url%E6%B7%B1%E6%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text"> 二、网址丽有什么：URL深挖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89http%E8%AF%B7%E6%B1%82"><span class="toc-number">1.3.</span> <span class="toc-text"> 三HTTP请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E8%AF%B7%E6%B1%82%E8%A1%8C%E7%AC%AC%E4%B8%80%E8%A1%8C"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 3.1 请求行（第一行）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%AD%E9%97%B4%E8%8B%A5%E5%B9%B2%E8%A1%8C"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 3.2 请求头（中间若干行）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-%E7%A9%BA%E8%A1%8C"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 3.3 空行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-%E8%AF%B7%E6%B1%82%E4%BD%93"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 3.4 请求体</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-http%E5%93%8D%E5%BA%94"><span class="toc-number">1.4.</span> <span class="toc-text"> 四、HTTP响应</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-%E7%8A%B6%E6%80%81%E6%A0%8F%E7%AC%AC%E4%B8%80%E8%A1%8C"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 4.1 状态栏（第一行）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-%E5%93%8D%E5%BA%94%E5%A4%B4"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 4.2 响应头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-%E7%A9%BA%E8%A1%8C"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 4.3 空行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#44-%E5%93%8D%E5%BA%94%E4%BD%93"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 4.4 响应体</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">1.5.</span> <span class="toc-text"> 五、状态码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-get-%E4%B8%8Epost"><span class="toc-number">1.6.</span> <span class="toc-text"> 六、GET 与POST</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#61-post%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E6%80%8E%E4%B9%88%E5%91%8A%E8%AF%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 6.1 POST提交数据，怎么告诉服务器格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-cookie%E4%B8%8Esession"><span class="toc-number">1.7.</span> <span class="toc-text"> 七、Cookie与Session</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#71-cookie"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 7.1 cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#72-session"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 7.2 Session</span></a></li></ol></li></ol></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Ciallo～" class="lazyload">
+  <div class="sidebar-author-name">Ciallo～</div>
+  <div class="sidebar-description">Ciallo～(∠・ω&lt; )⌒★</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/chengleiz393-tech itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-HTTP协议" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2026-09-19T03:30:36.000Z" itemprop="datePublished">2026-09-19</time>
+    <time style="display: none;" id="post-update-time">2026-09-21</time>
+  </span>
+</div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <h1 id="http协议"><a class="markdownIt-Anchor" href="#http协议"></a> HTTP协议</h1>
+<h2 id="http是什么"><a class="markdownIt-Anchor" href="#http是什么"></a> HTTP是什么</h2>
+<p>HTTP：<strong>超文本传输协议</strong></p>
+<h3 id="11超文本"><a class="markdownIt-Anchor" href="#11超文本"></a> 1.1超文本</h3>
+<p>超文本是图片，文章，压缩包和<strong>超链接</strong>的集合体。</p>
+<p>HTML就是典型的超链接。</p>
+<h3 id="12-传送"><a class="markdownIt-Anchor" href="#12-传送"></a> 1.2 传送</h3>
+<p>HTTP是<strong>双向的</strong>：浏览器能给网站穿请求，网站能给浏览器返回内容。</p>
+<h3 id="13-协议"><a class="markdownIt-Anchor" href="#13-协议"></a> 1.3 协议</h3>
+<p>协议就是双方约定好的暗号等</p>
+<h3 id="14-http的模型客户端服务端"><a class="markdownIt-Anchor" href="#14-http的模型客户端服务端"></a> 1.4 HTTP的模型：客户端/服务端</h3>
+<p>HTTp基于<strong>客户端</strong>/<strong>服务端</strong>：浏览器是客户端，发起请求；网站是服务端响应请求。</p>
+<p>特点</p>
+<ul>
+<li><strong>请求/响应</strong>：一次完整的对话是一次请求和一次响应</li>
+<li><strong>无状态</strong>：HTTP默认不记事——服务器每一次对话都像是刚见面一样。（cookie/Sesssion就是在补这个短板）</li>
+</ul>
+<hr />
+<h2 id="二-网址丽有什么url深挖"><a class="markdownIt-Anchor" href="#二-网址丽有什么url深挖"></a> 二、网址丽有什么：URL深挖</h2>
+<p>完整的URL</p>
+<p><code>protocol://host[:port]/path[？query][#fragent]</code></p>
+<p><code>协议       主机  端口   路径  ？参数    #片段</code></p>
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>干什么</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>protocol</td>
+<td>协议名</td>
+<td><code>http://</code></td>
+</tr>
+<tr>
+<td>host</td>
+<td>主机域名或IP</td>
+<td><code>localhost</code></td>
+</tr>
+<tr>
+<td>port</td>
+<td>端口，资源的门</td>
+<td><code>8080</code></td>
+</tr>
+<tr>
+<td>path</td>
+<td>服务器上的资源路径</td>
+<td><code>/blog</code></td>
+</tr>
+<tr>
+<td>？query]</td>
+<td>查询参数</td>
+<td></td>
+</tr>
+<tr>
+<td>#fragent</td>
+<td>页面的片段定位</td>
+<td><code>#top</code></td>
+</tr>
+</tbody>
+</table>
+<p>其他协议</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>http://</td>
+<td>普通网页</td>
+</tr>
+<tr>
+<td>https://</td>
+<td>加密网页</td>
+</tr>
+<tr>
+<td>mailto:</td>
+<td>打开邮件软件</td>
+</tr>
+<tr>
+<td>ftp://</td>
+<td>传文件</td>
+</tr>
+<tr>
+<td>file://</td>
+<td>打开本机文件</td>
+</tr>
+</tbody>
+</table>
+<p>易错点</p>
+<ul>
+<li><strong>#片段</strong>：和参数容易搞混，区别：<strong>参数（？后）<strong>会发给</strong>服务器</strong>，片段**#**后只给浏览器自己用</li>
+</ul>
+<hr />
+<h2 id="三http请求"><a class="markdownIt-Anchor" href="#三http请求"></a> 三HTTP请求</h2>
+<p>请求的组成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">请求行 GET /news HTTP/1.1</span><br><span class="line">请求头 Host:localhost:8080</span><br><span class="line">	  User-Agent:Mozilla/5.0</span><br><span class="line">	  Refer:http://localhost:8080/</span><br><span class="line">	  Cookie:session_id=xxx</span><br><span class="line">空行   （一个空行）</span><br><span class="line">请求体 （GET 没有；POST才有）</span><br></pre></td></tr></table></figure>
+<h3 id="31-请求行第一行"><a class="markdownIt-Anchor" href="#31-请求行第一行"></a> 3.1 请求行（第一行）</h3>
+<p><code>方法 空格 路径 空格 HTTP版本 回车换行</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET  /nwes HTTP/1.1</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>方法</strong>：告诉服务器我想干什么</li>
+<li><strong>路径</strong>：要哪个资源</li>
+<li>HTTP版本 ：<code>HTTP/1.1``HTTP/2</code></li>
+</ul>
+<h3 id="32-请求头中间若干行"><a class="markdownIt-Anchor" href="#32-请求头中间若干行"></a> 3.2 请求头（中间若干行）</h3>
+<p><code>名字：值</code>这样的键值对每行<strong>一个</strong>是请求的附加说明HTTP/1.1里除了<code>Host</code>其余请求头都是可选</p>
+<table>
+<thead>
+<tr>
+<th>常见请求头</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Host</code></td>
+<td>要去哪个网址（域名加端口）</td>
+</tr>
+<tr>
+<td><code>User-Agent</code></td>
+<td>“我是誰”–浏览器类型，系统信息</td>
+</tr>
+<tr>
+<td><code>Referer</code></td>
+<td>“我从哪里来”——上个页面</td>
+</tr>
+<tr>
+<td><code>Cookie</code></td>
+<td>“我的号牌”—–之前服务器发给我的凭证</td>
+</tr>
+<tr>
+<td><code>Content-Type</code></td>
+<td>请求体里是什么格式（POST才有）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>头不用背，知道含义以及<code>Cookie</code>和<code>Content-Type</code>这两个重要就行</p>
+</blockquote>
+<h3 id="33-空行"><a class="markdownIt-Anchor" href="#33-空行"></a> 3.3 空行</h3>
+<p>分界线，表示请求头结束，下面是请求体</p>
+<h3 id="34-请求体"><a class="markdownIt-Anchor" href="#34-请求体"></a> 3.4 请求体</h3>
+<p><strong>GET里没有请求体</strong>：要的东西在URL就有了。<strong>POST有请求体</strong>：里面是提交给服务器的数据。如登录表单</p>
+<h2 id="四-http响应"><a class="markdownIt-Anchor" href="#四-http响应"></a> 四、HTTP响应</h2>
+<blockquote>
+<p>响应和请求格式差不多，都由四个部分组成</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">状态行 HTTP/1.1(协议) 200（状态码） ok</span><br><span class="line">响应头 Content-Type:text/html: charset=utf-8</span><br><span class="line">      Content-Length: 1024</span><br><span class="line">      Set-Cookie: session_id=admin</span><br><span class="line">空行   &lt;空行&gt;</span><br><span class="line">响应体 &lt;IDCTYPE html&gt;....页面内容...&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="41-状态栏第一行"><a class="markdownIt-Anchor" href="#41-状态栏第一行"></a> 4.1 状态栏（第一行）</h3>
+<p><code>HTTP版本 空格 状态码 空格 状态说明</code>比如<code>HTTP/1.1 200 ok</code>状态码是服务器的“表情”来表示访问成不成功等</p>
+<h3 id="42-响应头"><a class="markdownIt-Anchor" href="#42-响应头"></a> 4.2 响应头</h3>
+<table>
+<thead>
+<tr>
+<th>常见响应头</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Content-Type</code></td>
+<td>返回内容</td>
+</tr>
+<tr>
+<td><code>Content-Length</code></td>
+<td>内容有多长</td>
+</tr>
+<tr>
+<td><code>Set-cookie</code></td>
+<td>服务器发给你的号牌（记住你的关键）</td>
+</tr>
+<tr>
+<td><code>Location</code></td>
+<td>跳转到哪里（配合301/302使用）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-空行"><a class="markdownIt-Anchor" href="#43-空行"></a> 4.3 空行</h3>
+<p>同上</p>
+<h3 id="44-响应体"><a class="markdownIt-Anchor" href="#44-响应体"></a> 4.4 响应体</h3>
+<p>真正返回的内容，对网页来说就是HTML源代码,再配合CSS,JS渲染页面</p>
+<h2 id="五-状态码"><a class="markdownIt-Anchor" href="#五-状态码"></a> 五、状态码</h2>
+<p>状态码是三位数字，一共无类：</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>含义</th>
+<th>常见例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1xx</strong></td>
+<td>提示信息（中间状态少见）</td>
+<td><code>100</code>Contiune</td>
+</tr>
+<tr>
+<td><strong>2xx</strong></td>
+<td>成功：服务器处理好了</td>
+<td><code>200</code>一切正常；<code>204</code>成功但没内容；<code>206</code>分块下载/断点传续</td>
+</tr>
+<tr>
+<td><strong>3xx</strong></td>
+<td>重定向：资源挪地方了，去新地址</td>
+<td><code>301</code>永久跳转；<code>302</code>临时跳转；<code>304</code>没变，用缓存</td>
+</tr>
+<tr>
+<td><strong>4xx</strong></td>
+<td>客户端出错：你（请求）有问题</td>
+<td><code>400</code>请求格式错；<code>403</code>禁止访问；<code>404</code>找不到</td>
+</tr>
+<tr>
+<td><strong>5xx</strong></td>
+<td>服务端出错：服务器自己有问题</td>
+<td><code>500</code>服务器内部错误；<code>502</code>网关/代理连不上后端;<code>503</code>服务繁忙</td>
+</tr>
+</tbody>
+</table>
+<p>常见状态码</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>通俗理解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>200</code></td>
+<td>成功，要的东西给你</td>
+</tr>
+<tr>
+<td><code>301/302</code></td>
+<td>跳转，去新的地址（都会在响应头<code>Location</code>写新地址）</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>你知道有这个东西，但不给你看</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>没有这个文件或页面</td>
+</tr>
+<tr>
+<td><code>500</code></td>
+<td>服务器或程序崩溃了</td>
+</tr>
+<tr>
+<td><code>502</code></td>
+<td>网关/代理连不上后面的后端</td>
+</tr>
+</tbody>
+</table>
+<h2 id="六-get-与post"><a class="markdownIt-Anchor" href="#六-get-与post"></a> 六、GET 与POST</h2>
+<p>HTTP的请求方式不止有两个，HTTP/1.0定义了三个GET、POST、HEAD;HTTP/1.1又加了六个:OPTIONS、PIUT、PATCH、delete、TRACE、CONNECT</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>获取资源（查）</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>提交数据、附加新内容（改、传）</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>只要响应头不要内容（判断有没有）</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>存一个资源（整体替换）</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删一个资源</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>问服务器支持哪些选项/方法</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td>建立隧道（代理、HTTPS常用）</td>
+</tr>
+<tr>
+<td>TRACE/PATCH</td>
+<td>TRACE：诊断回显；PATCH：局部修改</td>
+</tr>
+</tbody>
+</table>
+<p><strong>一般遇到的都是GET和POST</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>GET</th>
+<th>POST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>干的事</td>
+<td>要数据（查）</td>
+<td>提交数据（改/传）</td>
+</tr>
+<tr>
+<td>参数放哪</td>
+<td>URL里</td>
+<td>请求体里</td>
+</tr>
+<tr>
+<td>能不能被收藏/缓存</td>
+<td>能：URL里本身就是全部</td>
+<td>不能（数据在体内）</td>
+</tr>
+<tr>
+<td>常见的坑</td>
+<td>参数会留在地址栏，日志里</td>
+<td>参数在体内肉眼看不到</td>
+</tr>
+<tr>
+<td>例子</td>
+<td>看新闻，搜索</td>
+<td>登录，发帖、下单</td>
+</tr>
+</tbody>
+</table>
+<h3 id="61-post提交数据怎么告诉服务器格式"><a class="markdownIt-Anchor" href="#61-post提交数据怎么告诉服务器格式"></a> 6.1 POST提交数据，怎么告诉服务器格式</h3>
+<p><code>Content-Type</code>常见格式</p>
+<table>
+<thead>
+<tr>
+<th>Content-Type</th>
+<th>干什么</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>application/x-www-form-urlencoded</code></td>
+<td>最常见的表单提交</td>
+<td>登录表单</td>
+</tr>
+<tr>
+<td><code>multipart/form-date</code></td>
+<td>上传文件用的，用一串<code>boundary</code>边界把不同字段拆开</td>
+<td>上传文件、头像</td>
+</tr>
+<tr>
+<td><code>application/json</code></td>
+<td>给接口传JSON字符串</td>
+<td>前后端接口对接</td>
+</tr>
+</tbody>
+</table>
+<h2 id="七-cookie与session"><a class="markdownIt-Anchor" href="#七-cookie与session"></a> 七、Cookie与Session</h2>
+<h3 id="71-cookie"><a class="markdownIt-Anchor" href="#71-cookie"></a> 7.1 cookie</h3>
+<p>类似于号牌来验证身份的</p>
+<blockquote>
+<p>Cookie是存在浏览器里面的号牌，浏览器每次自动携带</p>
+</blockquote>
+<h3 id="72-session"><a class="markdownIt-Anchor" href="#72-session"></a> 7.2 Session</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Cookie</th>
+<th>Session</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>存在哪</td>
+<td>浏览器那边</td>
+<td>服务器那边</td>
+</tr>
+<tr>
+<td>谁在管</td>
+<td>浏览器自带</td>
+<td>服务器的记账本</td>
+</tr>
+<tr>
+<td>比喻</td>
+<td>你手里的号牌</td>
+<td>服务员心里的账本</td>
+</tr>
+<tr>
+<td>偷走会怎么样</td>
+<td>号码被偷-&gt;别人能冒充你</td>
+<td>一般碰不到</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    <footer class="article-footer">
+        <blockquote class="article-copyright">
+    <p><strong><span class="icon-user icon"></span>本文作者：</strong>Ciallo～</p>
+    <p><strong><span class="icon-link icon"></span>本文链接：</strong><a href="https://chengleiz393-tech.github.io/project/2026/09/19/HTTP%E5%8D%8F%E8%AE%AE/">https://chengleiz393-tech.github.io/project/2026/09/19/HTTP%E5%8D%8F%E8%AE%AE/</a></p>
+    <p><strong><span class="icon-pencil icon"></span>本文标题：</strong>「HTTP协议」</p>
+    <p><strong><span class="icon-calendar icon"></span>本文发布时间：</strong>2026-09-19 11:30:36</p>
+    <p><strong><span class="icon-calendar icon"></span>本文更新时间：</strong>2026-09-21 18:27:14</p>
+    <p><strong><span class="icon-copyright icon"></span>本文版权：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> 许可协议。转载请注明出处！</p>
+    <span class="icon-creative-commons article-copyright-bg"></span>
+  </blockquote>
+        <a class="article-category-link" href="/categories/web/" title="web" data-aos="zoom-in">web</a>
+
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag" title="笔记">笔记</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+            <img data-src="https://d-sketon.top/img/_backwebp/bg1.webp" data-sizes="auto" alt="搜索引擎的使用" class="lazyload">
+        <a href="/2026/09/21/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9A%84%E4%BD%BF%E7%94%A8/" aria-label="前一篇: 搜索引擎的使用" title="前一篇: 搜索引擎的使用"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            搜索引擎的使用
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+          <img data-src="https://d-sketon.top/img/_backwebp/bg1.webp" data-sizes="auto" alt="汇编语言(待续)" class="lazyload">
+      <a href="/2026/09/19/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" aria-label="后一篇: 汇编语言(待续)"  title="后一篇: 汇编语言(待续)"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          汇编语言(待续)
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2026
+        <span class="footer-info-sep rotate"></span>
+      Ciallo～
+    </div>
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+      <div>
+        <span class="icon-brush"></span>
+        9.8k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        00:43
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#http%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.</span> <span class="toc-text"> HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#http%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.</span> <span class="toc-text"> HTTP是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11%E8%B6%85%E6%96%87%E6%9C%AC"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 1.1超文本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E4%BC%A0%E9%80%81"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 1.2 传送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 1.3 协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-http%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 1.4 HTTP的模型：客户端&#x2F;服务端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BD%91%E5%9D%80%E4%B8%BD%E6%9C%89%E4%BB%80%E4%B9%88url%E6%B7%B1%E6%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text"> 二、网址丽有什么：URL深挖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89http%E8%AF%B7%E6%B1%82"><span class="toc-number">1.3.</span> <span class="toc-text"> 三HTTP请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E8%AF%B7%E6%B1%82%E8%A1%8C%E7%AC%AC%E4%B8%80%E8%A1%8C"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 3.1 请求行（第一行）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%AD%E9%97%B4%E8%8B%A5%E5%B9%B2%E8%A1%8C"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 3.2 请求头（中间若干行）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-%E7%A9%BA%E8%A1%8C"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 3.3 空行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-%E8%AF%B7%E6%B1%82%E4%BD%93"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 3.4 请求体</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-http%E5%93%8D%E5%BA%94"><span class="toc-number">1.4.</span> <span class="toc-text"> 四、HTTP响应</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-%E7%8A%B6%E6%80%81%E6%A0%8F%E7%AC%AC%E4%B8%80%E8%A1%8C"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 4.1 状态栏（第一行）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-%E5%93%8D%E5%BA%94%E5%A4%B4"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 4.2 响应头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-%E7%A9%BA%E8%A1%8C"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 4.3 空行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#44-%E5%93%8D%E5%BA%94%E4%BD%93"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 4.4 响应体</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">1.5.</span> <span class="toc-text"> 五、状态码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-get-%E4%B8%8Epost"><span class="toc-number">1.6.</span> <span class="toc-text"> 六、GET 与POST</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#61-post%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E6%80%8E%E4%B9%88%E5%91%8A%E8%AF%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 6.1 POST提交数据，怎么告诉服务器格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-cookie%E4%B8%8Esession"><span class="toc-number">1.7.</span> <span class="toc-text"> 七、Cookie与Session</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#71-cookie"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 7.1 cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#72-session"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 7.2 Session</span></a></li></ol></li></ol></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Ciallo～" class="lazyload">
+  <div class="sidebar-author-name">Ciallo～</div>
+  <div class="sidebar-description">Ciallo～(∠・ω&lt; )⌒★</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/chengleiz393-tech itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+          <div class="sidebar-menu-icon icon rotate">
+              &#xe62b;
+          </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png" loading="lazy" decoding="async" fetchpriority="low"/>
+        </div>
+      </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+  <script>
+    var setupFirework = () => {
+      if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+        window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+      }
+    }
+  </script>
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.2.0/dist/index.umd.js" integrity="sha384-qi9WggRt19tv8Vc7pCHW3ulMNLwrn515zaLEWZjl1px07vz8+pUoWX8n1rgq282T" crossorigin="anonymous" onload="setupFirework()" defer></script>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/live2d-widgets@0.9.0/autoload.js" integrity="sha384-poTN7wN&#x2F;SqNhQqo3jdFeX20ikddWeFGkUkDEzsKjgH&#x2F;ez8aQLn81oI0Cw6q5xNyB" crossorigin="anonymous"></script>
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "Ciallo～",
+          title: "HTTP协议",
+          url: "https://chengleiz393-tech.github.io/project/2026/09/19/HTTP%E5%8D%8F%E8%AE%AE/",
+          excerpt: "",
+          description: "",
+          stripContent: " HTTP协议  HTTP是什么 HTTP：超文本传输协议  1.1超文本 超文本是图片，文章，压缩包和超链接的集合体。 HTML就是典型的超链接。  1.2 传送 HTTP是双向的：浏览器能给网站穿请求，网站能给浏览器返回内容。  1.3 协议 协议就是双方约定好的暗号等  1.4 HTTP的模型：客户端/服务端 HTTp基于客户端/服务端：浏览器是客户端，发起请求；网站是服务端响应请求。 特点  请求/响应：一次完整的对话是一次请求和一次响应 无状态：HTTP默认不记事——服务器每一次对话都",
+          date: "Sat Sep 19 2026 11:30:36 GMT+0800",
+          updated: "Mon Sep 21 2026 18:27:14 GMT+0800",
+          cover: "/images/banner.webp",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      
+<script src="/js/tabs.js" data-pjax defer></script>
+
+      <script type="module" data-pjax>
+        (async () => {
+          const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+          const initPswp = (gallery, children) => {
+            if (_$$(`${gallery} ${children}`).length > 0) {
+              new PhotoSwipeLightbox({
+                gallery,
+                children,
+                pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+              }).init();
+            }
+          }
+          const pswp = () => {
+            initPswp('.article-entry', 'a.article-gallery-item');
+            initPswp('.article-gallery', 'a.article-gallery-item');
+          }
+          pswp();
+        })();
+      </script>
+        
+
+
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.12.6' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+  
+<script src="/js/service_worker.js"></script>
+
+
+
+    
+<script src="https://npm.webcache.cn/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6&#x2F;1Nxveei" crossorigin="anonymous" defer data-pjax></script>
+
+    <script data-pjax>
+      window.MathJax = {"tex":{"tags":"ams","useLabelIds":true,"inlineMath":[["$","$"],["\\\\(","\\\\)"]],"displayMath":[["$$","$$"],["\\\\[","\\\\]"]],"processEscapes":true,"processEnvironments":true,"autoload":{"color":[],"colorv2":["color"]},"packages":{"[+]":["noerrors"]}},"options":{"skipHtmlTags":["script","noscript","style","textarea","pre","code"],"ignoreHtmlClass":"tex2jax_ignore","processHtmlClass":"tex2jax_process"},"loader":{"load":["input/asciimath","[tex]/noerrors"]}};
+    </script>
+
+
+
+  </body>
+  </html>
